@@ -9,13 +9,11 @@ public class C206_CaseStudy {
 
 		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
 
-		
 		ArrayList<MonthlyMenu> monthlyList = new ArrayList<MonthlyMenu>();
-		
+
 		ArrayList<Drinks> drinkList = new ArrayList<Drinks>();
-		
-		ArrayList <Items> itemList = new ArrayList<Items>();
-		
+
+		ArrayList<Items> itemList = new ArrayList<Items>();
 
 		// add user account
 		userAcctList.add(new UserAccount(1, "Matthew", "T0313194c", "Student"));
@@ -24,6 +22,18 @@ public class C206_CaseStudy {
 		lunchboxList.add(new LunchBox("Tuna Sandwich", "Vegetarian Food", 2.50));
 		lunchboxList.add(new LunchBox("Chicken Cutlet Rice", "Western Food", 5.00));
 		lunchboxList.add(new LunchBox("Char Kuay Teow", "Asian Food", 4.00));
+
+		itemList.add(new Items("Spaghetti", "Western"));
+		itemList.add(new Items("Baked Rice", "Western"));
+		itemList.add(new Items("Black Bean Noodle", "Korean"));
+		itemList.add(new Items("Chicken Rice", "Asian"));
+		itemList.add(new Items("Vegetarian Noodles", "Vegetarian"));
+
+		drinkList.add(new Drinks("Iced Milo"));
+		drinkList.add(new Drinks("Iced Bandung"));
+		drinkList.add(new Drinks("Plain Water"));
+		drinkList.add(new Drinks("Orange Juice"));
+		drinkList.add(new Drinks("Apple Juice"));
 
 		int option = 0;
 
@@ -37,142 +47,130 @@ public class C206_CaseStudy {
 					// View Staff Menu
 					C206_CaseStudy.StaffMenu();
 					option = Helper.readInt("Enter an option > ");
-	
+
 					if (option == 1) {
 						// Monthly Menu
 						C206_CaseStudy.StaffMenu1();
 						option = Helper.readInt("Enter an option > ");
-	
+
 						if (option == 1) {
 							// Generate Monthly Menu
 							generateMonthlyMenu(monthlyList, drinkList, itemList);
 						}
-	
+
 						else if (option == 2) {
 							// View Monthly Menu
 							viewMonthlyMenu(monthlyList);
 						}
-	
+
 						else if (option == 3) {
 							// Delete Monthly Menu
 							deleteMonthlyMenu(monthlyList);
-							
-							
 						}
 					}
-	
+
 					else if (option == 2) {
-	                    // Menu Items
-	                    C206_CaseStudy.StaffMenu2();
-	                    option = Helper.readInt("Enter an option > ");
-	                    itemList.add(new Items("Spaghetti", "Western"));
-	                    itemList.add(new Items("Baked Rice", "Western"));
-	                    itemList.add(new Items("Black Bean Noodle", "Korean"));
-	                    itemList.add(new Items("Chicken Rice", "Asian"));
-	                    itemList.add(new Items("Vegetarian Noodles", "Vegetarian"));
-	                    
-	                    drinkList.add(new Drinks("Iced Milo"));
-	                    drinkList.add(new Drinks("Iced Bandung"));
-	                    drinkList.add(new Drinks("Plain Water"));
-	                    drinkList.add(new Drinks("Orange Juice"));
-	                    drinkList.add(new Drinks("Apple Juice"));
-	
-	                    if (option == 1) {
-	                        // Add Menu Items
-	                        C206_CaseStudy.ItemsMenu();
-	
-	
-	                        if (option == 1) {
-	                            String drinks = Helper.readString("Add a drink > ");
-	                            drinkList.add(new Drinks(drinks));
-	                        } else if (option == 2) {
-	                            String food = Helper.readString("Add a food > ");
-	                            String category = Helper.readString("Category > ");
-	                            itemList.add(new Items(food, category));
-	                        }
-	                    }
-	
-	                    else if (option == 2) {
-	                        int a = 0;
-	                        int b = 0;
-	                        // View Menu Items
-	                        
-	                        System.out.println("Food Item: ");
-	                        for (Items i : itemList) {
-	                            a++;
-	                            System.out.println(a + ". " + i.getItem());
-	                        }
-	                        
-	                        System.out.println("\nDrink Item: ");
-	                        for (Drinks d : drinkList) {
-	                        	b++;
-	                        	System.out.println(b + ". " + d.getName());
-	                        }
-	                    }
-	
-	
-	                    else if (option == 3) {
-	                        int a = 0;
-	                        // Delete Menu Items
-	                        C206_CaseStudy.ItemsMenu();
-	                        if (option == 1) {
-	                            String item = Helper.readString("Enter drink name to delete > ");
-	                            for (Drinks d : drinkList) {
-	                                if (item.equals(d.getName())) {
-	                                    drinkList.remove(a);
-	                                }
-	                                a++;
-	                            }
-	                        } else if (option == 2) {
-	                            String item = Helper.readString("Enter food name to delete > ");
-	                            for (Items i : itemList) {
-	                                if (item.equals(i.getItem())) {
-	                                    itemList.remove(a);
-	                                }
-	                                a++;
-	                            }
-	                        }
-	                    }
-	        
+						// Menu Items
+						C206_CaseStudy.StaffMenu2();
+						option = Helper.readInt("Enter an option > ");
+
+						if (option == 1) {
+							// Add Menu Items
+							C206_CaseStudy.ItemsMenu();
+							option = Helper.readInt("Enter an option > ");
+							
+							if (option == 1) {
+								String drinks = Helper.readString("Add a drink > ");
+								drinkList.add(new Drinks(drinks));
+								System.out.println("Drinks added successfully");
+							} else if (option == 2) {
+								String food = Helper.readString("Add a food > ");
+								String category = Helper.readString("Category > ");
+								itemList.add(new Items(food, category));
+								System.out.println("Food added successfully");
+							}
+						}
+
+						else if (option == 2) {
+							int a = 0;
+							int b = 0;
+							// View Menu Items
+
+							System.out.println("Food Item: ");
+							for (Items i : itemList) {
+								a++;
+								System.out.println(a + ". " + i.getItem());
+							}
+
+							System.out.println("\nDrink Item: ");
+							for (Drinks d : drinkList) {
+								b++;
+								System.out.println(b + ". " + d.getName());
+							}
+						}
+
+						else if (option == 3) {
+							int a = 0;
+							// Delete Menu Items
+							C206_CaseStudy.ItemsMenu();
+							if (option == 1) {
+								String item = Helper.readString("Enter drink name to delete > ");
+								for (Drinks d : drinkList) {
+									if (item.equals(d.getName())) {
+										drinkList.remove(a);
+									}
+									a++;
+								}
+							} else if (option == 2) {
+								String item = Helper.readString("Enter food name to delete > ");
+								for (Items i : itemList) {
+									if (item.equals(i.getItem())) {
+										itemList.remove(a);
+									}
+									a++;
+								}
+							}
+						}
+
 					}
-	
-	
 					else if (option == 3) {
 						// Order Bill
 						C206_CaseStudy.StaffMenu3();
 						option = Helper.readInt("Enter an option > ");
-	
+
 						if (option == 1) {
 							// Add Order Bill
 						}
-						
+
 						else if (option == 2) {
 							// View Order Bill
 						}
-	
+
 						else if (option == 3) {
 							// Delete Order Bill
 						}
 					}
-	
-				} else if (option == 2) {
+					C206_CaseStudy.MainMenu();
+					option = Helper.readInt("Enter an option > ");
+				}
+				else if (option == 2) {
 					// User Login
 					C206_CaseStudy.UserMenu();
 					option = Helper.readInt("Enter an option > ");
-	
+
 					if (option == 1) {
 						// User Account
 						C206_CaseStudy.UserMenu1();
 						option = Helper.readInt("Enter an option > ");
-	
+
 						if (option == 1) {
 							// Add User Account
 						}
-	
+
 						else if (option == 2) {
 							// View User Account
 						}
-	
+
 						else if (option == 3) {
 							// Delete User Account
 						}
@@ -180,24 +178,29 @@ public class C206_CaseStudy {
 						// LunchBox Order
 						C206_CaseStudy.UserMenu2();
 						option = Helper.readInt("Enter an option > ");
-	
+
 						if (option == 1) {
 							// Place LunchBox Order
 						}
-	
+
 						else if (option == 2) {
 							// View LunchBox Order
 						}
-	
+
 						else if (option == 3) {
 							// Delete LunchBox Order
 						}
 					}
+					C206_CaseStudy.MainMenu();
+					option = Helper.readInt("Enter an option > ");
+				}
+				else if (option == 3) {
+					System.out.println("Goodbye!");
+					break;
 				}
 			}
 
 		}
-		System.out.println("Goodbye!");
 	}
 
 	public static void MainMenu() {
@@ -269,16 +272,14 @@ public class C206_CaseStudy {
 		System.out.println("4. Quit");
 		Helper.line(80, "-");
 	}
-	
+
 	public static void ItemsMenu() {
-        C206_CaseStudy.setHeader("Item Type");
-        System.out.println("1. Add Drinks");
-        System.out.println("2. Add Food");
-        System.out.println("3. Quit");
-        Helper.line(80, "-");
-    }
-
-
+		C206_CaseStudy.setHeader("Item Type");
+		System.out.println("1. Add Drinks");
+		System.out.println("2. Add Food");
+		System.out.println("3. Quit");
+		Helper.line(80, "-");
+	}
 
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
@@ -304,8 +305,9 @@ public class C206_CaseStudy {
 		output += retrieveAllLunchBoxes(lunchboxList);
 		System.out.println(output);
 	}
-	
-	public static void generateMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList, ArrayList <Items> itemList) {
+
+	public static void generateMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
+			ArrayList<Items> itemList) {
 //		Random random = new Random();
 //		int r = random.nextInt(itemList.size());
 //		int u = random.nextInt(drinkList.size());
@@ -315,21 +317,26 @@ public class C206_CaseStudy {
 //			monthlyList.add(new MonthlyMenu(i, itemList.get(r).getCategory(), itemList.get(r).getItem(), drinkList.get(u).getName()));
 //			
 //		}
-		
+
 //		for (int i = 0; i < 5; i++)
-		monthlyList.add(new MonthlyMenu(1, itemList.get(0).getCategory(), itemList.get(0).getItem(), drinkList.get(0).getName()));
-		monthlyList.add(new MonthlyMenu(2, itemList.get(1).getCategory(), itemList.get(1).getItem(), drinkList.get(1).getName()));
-		monthlyList.add(new MonthlyMenu(3, itemList.get(2).getCategory(), itemList.get(2).getItem(), drinkList.get(2).getName()));
-		monthlyList.add(new MonthlyMenu(4, itemList.get(3).getCategory(), itemList.get(3).getItem(), drinkList.get(3).getName()));
-		monthlyList.add(new MonthlyMenu(5, itemList.get(4).getCategory(), itemList.get(4).getItem(), drinkList.get(4).getName()));
-		
+		for (int i = 0; i < 5; i++) {
+			Items m = itemList.get(i);
+			Drinks d = drinkList.get(i);
+			monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
+		}
+//		monthlyList.add(new MonthlyMenu(1, itemList.get(0).getCategory(), itemList.get(0).getItem(), drinkList.get(0).getName()));
+//		monthlyList.add(new MonthlyMenu(2, itemList.get(1).getCategory(), itemList.get(1).getItem(), drinkList.get(1).getName()));
+//		monthlyList.add(new MonthlyMenu(3, itemList.get(2).getCategory(), itemList.get(2).getItem(), drinkList.get(2).getName()));
+//		monthlyList.add(new MonthlyMenu(4, itemList.get(3).getCategory(), itemList.get(3).getItem(), drinkList.get(3).getName()));
+//		monthlyList.add(new MonthlyMenu(5, itemList.get(4).getCategory(), itemList.get(4).getItem(), drinkList.get(4).getName()));
+//		
 		System.out.println("Monthly Menu have been generated!");
 	}
-	
+
 	public static void deleteMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
-		int i = 1; 
+		int i = 1;
 		String dayNo = Helper.readString("Enter day to delete (1-5) > ");
-		
+
 		if (monthlyList.size() >= 1) {
 			for (MonthlyMenu m : monthlyList) {
 				if (dayNo.equals(m.getDay())) {
@@ -337,31 +344,28 @@ public class C206_CaseStudy {
 				}
 				i++;
 			}
-		}
-		else if (monthlyList.size() == 0) {
+		} else if (monthlyList.size() == 0) {
 			System.out.println("There is no Monthly Menu in the list. Please generate a Monthly Menu!");
 		}
-		
+
 	}
-	
+
 	public static void viewMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
-		
-		
+
 		if (monthlyList.size() >= 1) {
 			String output = String.format("%-5s %-20s %-20s %-20s\n", "DAY", "CATEGORY", "FOOD", "DRINK");
 
 			for (MonthlyMenu m : monthlyList) {
-				
+
 				output += String.format("%-5d %-20s %-20s %-20s\n", m.getDay(), m.getCat(), m.getFood(), m.getDrink());
 			}
 			System.out.println(output);
 		}
-		
-		else if (monthlyList.size() == 0){
+
+		else if (monthlyList.size() == 0) {
 			System.out.println("Monthly Menu is empty. Please Generate a new Monthly Menu!");
 		}
-		
+
 	}
-	
-	
+
 }
