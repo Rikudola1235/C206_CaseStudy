@@ -9,28 +9,41 @@
 
 public class MonthlyMenu {
 	
-	private String menuItem;
-	private int month;
+	private String food;
+	private int week;
+	private String drink;
 	
-	public MonthlyMenu(String menuItem, int month) {
-		this.menuItem = menuItem;
-		this.month = month;
+	public MonthlyMenu(String food, int week, String drink) {
+		this.food = food;
+		this.week = week;
+		this.drink = drink;
 	}
 
-	public String getMenuItem() {
-		return menuItem;
+	public String getFood() {
+		return food;
 	}
 
-	public void setMenuItem(String menuItem) {
-		this.menuItem = menuItem;
+	public void setFood(String food) {
+		this.food = food;
 	}
 
-	public int getMonth() {
-		return month;
+	public int getWeek() {
+		return week;
 	}
 
-	public void setMonth(int month) {
-		this.month = month;
+	public void setWeek(int week) {
+		this.week = week;
 	}
+
+	public String getDrink() {
+		return drink;
+	}
+
+	public void setDrink(String drink) {
+		this.drink = drink;
+	}
+	
+	
+	
 
 }
