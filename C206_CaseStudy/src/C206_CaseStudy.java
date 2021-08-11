@@ -61,7 +61,12 @@ public class C206_CaseStudy {
                         // Add Menu Items
                         C206_CaseStudy.ItemsMenu();
 
- 
+                        itemList.add(new Items("Spaghetti", "Western"));
+                        itemList.add(new Items("Chicken Rice", "Asian"));
+                        itemList.add(new Items("Vegetarian Noodles", "Vegetarian"));
+                        
+                        drinkList.add(new Drinks("Orange Juice"));
+                        drinkList.add(new Drinks("Apple Juice"));
 
                         if (option == 1) {
                             String drinks = Helper.readString("Add a drink > ");
