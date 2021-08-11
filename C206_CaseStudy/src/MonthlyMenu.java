@@ -13,7 +13,7 @@ public class MonthlyMenu {
 	private int week;
 	private String drink;
 	
-	public MonthlyMenu(String food, int week, String drink) {
+	public MonthlyMenu(int week, String food, String drink) {
 		this.food = food;
 		this.week = week;
 		this.drink = drink;
