@@ -9,7 +9,11 @@ public class C206_CaseStudy {
 		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
 		
 		ArrayList<MonthlyMenu> monthlyList = new ArrayList<MonthlyMenu>();
-
+		
+		ArrayList<Drinks> drinkList = new ArrayList<Drinks>();
+		
+		ArrayList <Items> itemList = new ArrayList<Items>();
+		
 		// add user account
 		userAcctList.add(new UserAccount(1, "Matthew", "T0313194c", "Student"));
 
