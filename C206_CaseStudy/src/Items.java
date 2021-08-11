@@ -1,12 +1,52 @@
 
-/**
- * I declare that this code was written by me.
- * I will not copy or allow others to copy my code.
- * I understand that copying code is considered as plagiarism.
- *
- * 20021085, 11 Aug 2021 4:18:36 pm
- */
-
 public class Items {
+	
+	private int itemID;
+	private String category;
+	private String name;
+	private double price;
 
+	public Items(int itemID, String category, String name, double price) {
+		super();
+		this.itemID = itemID;
+		this.category = category;
+		this.name = name;
+		this.price = price;
+	}
+
+	public int getItemID() {
+		return itemID;
+	}
+
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	
+	
+	
 }
