@@ -335,12 +335,11 @@ public class C206_CaseStudy {
 		 System.out.println(output);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
+	public static void addAccount(ArrayList<Account> accountList, Account a) {
+		
+		accountList.add(a);
+		System.out.println("User added!");
+	}
+
 	
 }
