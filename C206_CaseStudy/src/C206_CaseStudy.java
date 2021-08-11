@@ -309,7 +309,7 @@ public class C206_CaseStudy {
 		generateMonthlyMenu();
 		
 		String month = Helper.readString("Select Month (1-12) > ");
-		String output = String.format("%-5s %-20s %-20s %-20s\n", "WEEK", "");
+		String output = String.format("%-5s %-20s %-20s %-20s\n", "DAY", "CATEGORY", "FOOD", "DRINK");
 		
 	}
 	
