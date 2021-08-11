@@ -18,10 +18,20 @@ public class LunchBoxMain {
 		lunchboxList.add(new LunchBox("Char Kuay Teow", "Asian Food", 4.00));
 
 		int option = 0;
+<<<<<<< HEAD
 
 		while (option != 4) {
 
 			LunchBoxMain.MainMenu();
+=======
+		int userType = 0;
+		
+		while (option != OPTION_QUIT) {
+			
+			userType = Helper.readInt("Student(1) /Parent(2) /Admin(3)> ");
+			
+			LunchBoxMain.menu();
+>>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
