@@ -27,7 +27,7 @@ public class LunchBoxMain {
 		
 		while (option != OPTION_QUIT) {
 			
-			userType = Helper.readInt("Student(1)/Parent(2) > ");
+			userType = Helper.readInt("Student(1) /Parent(2) /Admin(3)> ");
 			
 			LunchBoxMain.menu();
 			option = Helper.readInt("Enter an option > ");
