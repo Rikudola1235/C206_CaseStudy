@@ -20,17 +20,17 @@ public class C206_CaseStudy {
 
 		while (option != 3) {
 
-			LunchBoxMain.MainMenu();
+			C206_CaseStudy.MainMenu();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
 				// View Staff Menu
-				LunchBoxMain.StaffMenu();
+				C206_CaseStudy.StaffMenu();
 				option = Helper.readInt("Enter an option > ");
 
 				if (option == 1) {
 					// Monthly Menu
-					LunchBoxMain.StaffMenu1();
+					C206_CaseStudy.StaffMenu1();
 					option = Helper.readInt("Enter an option > ");
 
 					if (option == 1) {
@@ -48,7 +48,7 @@ public class C206_CaseStudy {
 
 				else if (option == 2) {
 					// Menu Items
-					LunchBoxMain.StaffMenu2();
+					C206_CaseStudy.StaffMenu2();
 					option = Helper.readInt("Enter an option > ");
 
 					if (option == 1) {
@@ -66,7 +66,7 @@ public class C206_CaseStudy {
 
 				else if (option == 3) {
 					// Order Bill
-					LunchBoxMain.StaffMenu3();
+					C206_CaseStudy.StaffMenu3();
 					option = Helper.readInt("Enter an option > ");
 
 					if (option == 1) {
@@ -84,12 +84,12 @@ public class C206_CaseStudy {
 
 			} else if (option == 2) {
 				// User Login
-				LunchBoxMain.UserMenu();
+				C206_CaseStudy.UserMenu();
 				option = Helper.readInt("Enter an option > ");
 				
 				if (option == 1) {
 					//User Account
-					LunchBoxMain.UserMenu1();
+					C206_CaseStudy.UserMenu1();
 					option = Helper.readInt("Enter an option > ");
 					
 					if (option == 1) {
@@ -106,7 +106,7 @@ public class C206_CaseStudy {
 				}
 				else if (option == 2) {
 					//LunchBox Order
-					LunchBoxMain.UserMenu2();
+					C206_CaseStudy.UserMenu2();
 					option = Helper.readInt("Enter an option > ");
 					
 					if (option == 1) {
@@ -125,5 +125,100 @@ public class C206_CaseStudy {
 
 		}
 		System.out.println("Goodbye!");
+	}
+	
+	public static void MainMenu() {
+		C206_CaseStudy.setHeader("Login");
+		System.out.println("1. Staff Login");
+		System.out.println("2. User Login");
+		System.out.println("3. Quit");
+		Helper.line(80, "-");
+	}
+
+	public static void StaffMenu() {
+		C206_CaseStudy.setHeader("Staff");
+		System.out.println("1. Monthly Menu");
+		System.out.println("2. Menu Items");
+		System.out.println("3. Order Bills");
+		System.out.println("4. Quit");
+		Helper.line(80, "-");
+	}
+
+	public static void StaffMenu1() {
+		C206_CaseStudy.setHeader("Monthly Menu");
+		System.out.println("1. Create Monthly Menu");
+		System.out.println("2. View Monthly Menu");
+		System.out.println("3. Delete Monthly Menu");
+		System.out.println("4. Quit");
+		Helper.line(80, "-");
+	}
+
+	public static void StaffMenu2() {
+		C206_CaseStudy.setHeader("Menu Items");
+		System.out.println("1. Add Menu Items");
+		System.out.println("2. View Menu Items");
+		System.out.println("3. Delete Menu Items");
+		System.out.println("4. Quit");
+		Helper.line(80, "-");
+	}
+
+	public static void StaffMenu3() {
+		C206_CaseStudy.setHeader("Order Bills");
+		System.out.println("1. Add Order Bill");
+		System.out.println("2. View Order Bill");
+		System.out.println("3. Delete Order Bill");
+		System.out.println("4. Quit");
+		Helper.line(80, "-");
+	}
+
+	public static void UserMenu() {
+		C206_CaseStudy.setHeader("User");
+		System.out.println("1. User Account");
+		System.out.println("2. LunchBox Order");
+		System.out.println("3. Quit");
+		Helper.line(80, "-");
+	}
+
+	public static void UserMenu1() {
+		C206_CaseStudy.setHeader("User Account");
+		System.out.println("1. Add User Account");
+		System.out.println("2. View User Account");
+		System.out.println("3. Delete User Account");
+		System.out.println("4. Quit");
+		Helper.line(80, "-");
+	}
+
+	public static void UserMenu2() {
+		C206_CaseStudy.setHeader("School LunchBox APP");
+		System.out.println("1. Place LunchBox Order");
+		System.out.println("2. View LunchBox Order");
+		System.out.println("3. Delete LunchBox Order");
+		System.out.println("4. Quit");
+		Helper.line(80, "-");
+	}
+
+	public static void setHeader(String header) {
+		Helper.line(80, "-");
+		System.out.println(header);
+		Helper.line(80, "-");
+	}
+
+	public static String retrieveAllLunchBoxes(ArrayList<LunchBox> lunchboxList) {
+		String output = "";
+		// write your code here
+		for (int i = 0; i < lunchboxList.size(); i++) {
+
+			output += String.format("%-10s %-30s %-10s\n", lunchboxList.get(i).getLunchBoxName(),
+					lunchboxList.get(i).getCategory(), lunchboxList.get(i).getPrice());
+		}
+		return output;
+	}
+
+	public static void viewAllLunchBoxes(ArrayList<LunchBox> lunchboxList) {
+
+		C206_CaseStudy.setHeader("LUNCHBOX LIST");
+		String output = String.format("%-10s %-30s %-10s\n", "LUNCHBOX", "CATEGORY", "PRICE");
+		output += retrieveAllLunchBoxes(lunchboxList);
+		System.out.println(output);
 	}
 }
