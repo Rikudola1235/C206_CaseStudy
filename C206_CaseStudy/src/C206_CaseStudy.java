@@ -56,18 +56,18 @@ public class C206_CaseStudy {
                     // Menu Items
                     C206_CaseStudy.StaffMenu2();
                     option = Helper.readInt("Enter an option > ");
+                    itemList.add(new Items("Spaghetti", "Western"));
+                    itemList.add(new Items("Chicken Rice", "Asian"));
+                    itemList.add(new Items("Vegetarian Noodles", "Vegetarian"));
+                    
+                    drinkList.add(new Drinks("Orange Juice"));
+                    drinkList.add(new Drinks("Apple Juice"));
 
                     if (option == 1) {
                         // Add Menu Items
                         C206_CaseStudy.ItemsMenu();
 
-                        itemList.add(new Items("Spaghetti", "Western"));
-                        itemList.add(new Items("Chicken Rice", "Asian"));
-                        itemList.add(new Items("Vegetarian Noodles", "Vegetarian"));
-                        
-                        drinkList.add(new Drinks("Orange Juice"));
-                        drinkList.add(new Drinks("Apple Juice"));
-
+                    
                         if (option == 1) {
                             String drinks = Helper.readString("Add a drink > ");
                             drinkList.add(new Drinks(drinks));
@@ -80,10 +80,19 @@ public class C206_CaseStudy {
 
                     else if (option == 2) {
                         int a = 0;
+                        int b = 0;
                         // View Menu Items
+                        
+                        System.out.println("Food Item: ");
                         for (Items i : itemList) {
                             a++;
                             System.out.println(a + ". " + i.getItem());
+                        }
+                        
+                        System.out.println("\nDrink Item: ");
+                        for (Drinks d : drinkList) {
+                        	b++;
+                        	System.out.println(b + ". " + d.getName());
                         }
                     }
 
