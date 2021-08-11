@@ -3,10 +3,11 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
-		
+
 		ArrayList<LunchBox> lunchboxList = new ArrayList<LunchBox>();
 
 		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
+<<<<<<< HEAD
 		
 		ArrayList<MonthlyMenu> monthlyList = new ArrayList<MonthlyMenu>();
 		
@@ -14,6 +15,12 @@ public class C206_CaseStudy {
 		
 		ArrayList <Items> itemList = new ArrayList<Items>();
 		
+=======
+
+		ArrayList<Items> itemList = new ArrayList<Items>();
+		ArrayList<Drinks> drinkList = new ArrayList<Drinks>();
+
+>>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
 		// add user account
 		userAcctList.add(new UserAccount(1, "Matthew", "T0313194c", "Student"));
 
@@ -63,10 +70,27 @@ public class C206_CaseStudy {
                     drinkList.add(new Drinks("Orange Juice"));
                     drinkList.add(new Drinks("Apple Juice"));
 
+<<<<<<< HEAD
                     if (option == 1) {
                         // Add Menu Items
                         C206_CaseStudy.ItemsMenu();
+=======
+					if (option == 1) {
+						// Add Menu Items
+						C206_CaseStudy.ItemsMenu();
 
+						if (option == 1) {
+							String drinks = Helper.readString("Add a drink > ");
+							drinkList.add(new Drinks(drinks));
+						} else if (option == 2) {
+							String food = Helper.readString("Add a food > ");
+							String category = Helper.readString("Category > ");
+							itemList.add(new Items(food, category));
+						}
+					}
+>>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
+
+<<<<<<< HEAD
                     
                         if (option == 1) {
                             String drinks = Helper.readString("Add a drink > ");
@@ -77,7 +101,18 @@ public class C206_CaseStudy {
                             itemList.add(new Items(food, category));
                         }
                     }
+=======
+					else if (option == 2) {
+						int a = 0;
+						// View Menu Items
+						for (Items i : itemList) {
+							a++;
+							System.out.println(a + ". " + i.getItem());
+						}
+					}
+>>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
 
+<<<<<<< HEAD
                     else if (option == 2) {
                         int a = 0;
                         int b = 0;
@@ -121,6 +156,31 @@ public class C206_CaseStudy {
                     }
                 }
  
+=======
+					else if (option == 3) {
+						int a = 0;
+						// Delete Menu Items
+						C206_CaseStudy.ItemsMenu();
+						if (option == 1) {
+							String item = Helper.readString("Enter drink name to delete > ");
+							for (Drinks d : drinkList) {
+								if (item.equals(d.getName())) {
+									drinkList.remove(a);
+								}
+								a++;
+							}
+						} else if (option == 2) {
+							String item = Helper.readString("Enter food name to delete > ");
+							for (Items i : itemList) {
+								if (item.equals(i.getItem())) {
+									itemList.remove(a);
+								}
+								a++;
+							}
+						}
+					}
+				}
+>>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
 
 				else if (option == 3) {
 					// Order Bill
@@ -130,7 +190,7 @@ public class C206_CaseStudy {
 					if (option == 1) {
 						// Add Order Bill
 					}
-
+					
 					else if (option == 2) {
 						// View Order Bill
 					}
@@ -144,12 +204,12 @@ public class C206_CaseStudy {
 				// User Login
 				C206_CaseStudy.UserMenu();
 				option = Helper.readInt("Enter an option > ");
-				
+
 				if (option == 1) {
-					//User Account
+					// User Account
 					C206_CaseStudy.UserMenu1();
 					option = Helper.readInt("Enter an option > ");
-					
+
 					if (option == 1) {
 						// Add User Account
 					}
@@ -161,12 +221,11 @@ public class C206_CaseStudy {
 					else if (option == 3) {
 						// Delete User Account
 					}
-				}
-				else if (option == 2) {
-					//LunchBox Order
+				} else if (option == 2) {
+					// LunchBox Order
 					C206_CaseStudy.UserMenu2();
 					option = Helper.readInt("Enter an option > ");
-					
+
 					if (option == 1) {
 						// Place LunchBox Order
 					}
@@ -184,7 +243,7 @@ public class C206_CaseStudy {
 		}
 		System.out.println("Goodbye!");
 	}
-	
+
 	public static void MainMenu() {
 		C206_CaseStudy.setHeader("Login");
 		System.out.println("1. Staff Login");
@@ -263,6 +322,14 @@ public class C206_CaseStudy {
         Helper.line(80, "-");
     }
 
+	public static void ItemsMenu() {
+		C206_CaseStudy.setHeader("Item Type");
+		System.out.println("1. Add Drinks");
+		System.out.println("2. Add Food");
+		System.out.println("3. Quit");
+		Helper.line(80, "-");
+	}
+
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
@@ -286,6 +353,22 @@ public class C206_CaseStudy {
 		String output = String.format("%-10s %-30s %-10s\n", "LUNCHBOX", "CATEGORY", "PRICE");
 		output += retrieveAllLunchBoxes(lunchboxList);
 		System.out.println(output);
+	}
+	
+	public static void generateMonthlyMenu() {
+		
+	}
+	
+	public static void deleteMonthlyMenu() {
+		
+	}
+	
+	public static void viewMonthlyMenu() {
+		generateMonthlyMenu();
+		
+		String month = Helper.readString("Select Month (1-12) > ");
+		String output = String.format("%-10s %-30s %-10s\n", "")
+		
 	}
 	
 	
