@@ -9,20 +9,20 @@
 
 public class MonthlyMenu {
 	
-	private int week;
+	private int day;
 	private String cat;
 	private String food;
 	private String drink;
 	
-	public MonthlyMenu(int week, String cat, String food, String drink) {
-		this.week = week;
+	public MonthlyMenu(int day, String cat, String food, String drink) {
+		this.day = day;
 		this.cat = cat;
 		this.food = food;
 		this.drink = drink;
 	}
 
-	public int getWeek() {
-		return week;
+	public int getDay() {
+		return day;
 	}
 
 	public String getCat() {
