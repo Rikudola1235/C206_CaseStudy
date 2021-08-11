@@ -109,7 +109,7 @@ public class C206_CaseStudy {
 					if (option == 1) {
 						// Add Order Bill
 					}
-
+					
 					else if (option == 2) {
 						// View Order Bill
 					}
