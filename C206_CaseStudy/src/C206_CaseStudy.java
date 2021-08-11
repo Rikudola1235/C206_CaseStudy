@@ -342,7 +342,6 @@ public class C206_CaseStudy {
 			System.out.println("There is no Monthly Menu in the list. Please generate a Monthly Menu!");
 		}
 		
-		
 	}
 	
 	public static void viewMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
