@@ -7,7 +7,7 @@ public class C206_CaseStudy {
 		ArrayList<LunchBox> lunchboxList = new ArrayList<LunchBox>();
 
 		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
-<<<<<<< HEAD
+
 		
 		ArrayList<MonthlyMenu> monthlyList = new ArrayList<MonthlyMenu>();
 		
@@ -15,12 +15,7 @@ public class C206_CaseStudy {
 		
 		ArrayList <Items> itemList = new ArrayList<Items>();
 		
-=======
 
-		ArrayList<Items> itemList = new ArrayList<Items>();
-		ArrayList<Drinks> drinkList = new ArrayList<Drinks>();
-
->>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
 		// add user account
 		userAcctList.add(new UserAccount(1, "Matthew", "T0313194c", "Student"));
 
@@ -64,34 +59,22 @@ public class C206_CaseStudy {
                     C206_CaseStudy.StaffMenu2();
                     option = Helper.readInt("Enter an option > ");
                     itemList.add(new Items("Spaghetti", "Western"));
+                    itemList.add(new Items("Baked Rice", "Western"));
+                    itemList.add(new Items("Black Bean Noodle", "Korean"));
                     itemList.add(new Items("Chicken Rice", "Asian"));
                     itemList.add(new Items("Vegetarian Noodles", "Vegetarian"));
                     
+                    drinkList.add(new Drinks("Iced Milo"));
+                    drinkList.add(new Drinks("Iced Bandung"));
+                    drinkList.add(new Drinks("Plain Water"));
                     drinkList.add(new Drinks("Orange Juice"));
                     drinkList.add(new Drinks("Apple Juice"));
 
-<<<<<<< HEAD
                     if (option == 1) {
                         // Add Menu Items
                         C206_CaseStudy.ItemsMenu();
-=======
-					if (option == 1) {
-						// Add Menu Items
-						C206_CaseStudy.ItemsMenu();
 
-						if (option == 1) {
-							String drinks = Helper.readString("Add a drink > ");
-							drinkList.add(new Drinks(drinks));
-						} else if (option == 2) {
-							String food = Helper.readString("Add a food > ");
-							String category = Helper.readString("Category > ");
-							itemList.add(new Items(food, category));
-						}
-					}
->>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
 
-<<<<<<< HEAD
-                    
                         if (option == 1) {
                             String drinks = Helper.readString("Add a drink > ");
                             drinkList.add(new Drinks(drinks));
@@ -101,18 +84,7 @@ public class C206_CaseStudy {
                             itemList.add(new Items(food, category));
                         }
                     }
-=======
-					else if (option == 2) {
-						int a = 0;
-						// View Menu Items
-						for (Items i : itemList) {
-							a++;
-							System.out.println(a + ". " + i.getItem());
-						}
-					}
->>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
 
-<<<<<<< HEAD
                     else if (option == 2) {
                         int a = 0;
                         int b = 0;
@@ -154,33 +126,9 @@ public class C206_CaseStudy {
                             }
                         }
                     }
-                }
- 
-=======
-					else if (option == 3) {
-						int a = 0;
-						// Delete Menu Items
-						C206_CaseStudy.ItemsMenu();
-						if (option == 1) {
-							String item = Helper.readString("Enter drink name to delete > ");
-							for (Drinks d : drinkList) {
-								if (item.equals(d.getName())) {
-									drinkList.remove(a);
-								}
-								a++;
-							}
-						} else if (option == 2) {
-							String item = Helper.readString("Enter food name to delete > ");
-							for (Items i : itemList) {
-								if (item.equals(i.getItem())) {
-									itemList.remove(a);
-								}
-								a++;
-							}
-						}
-					}
+        
 				}
->>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
+
 
 				else if (option == 3) {
 					// Order Bill
@@ -322,13 +270,7 @@ public class C206_CaseStudy {
         Helper.line(80, "-");
     }
 
-	public static void ItemsMenu() {
-		C206_CaseStudy.setHeader("Item Type");
-		System.out.println("1. Add Drinks");
-		System.out.println("2. Add Food");
-		System.out.println("3. Quit");
-		Helper.line(80, "-");
-	}
+
 
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
