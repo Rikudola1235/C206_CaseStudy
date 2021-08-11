@@ -16,128 +16,9 @@ public class LunchBoxMain {
 		lunchboxList.add(new LunchBox("Tuna Sandwich", "Vegetarian Food", 2.50));
 		lunchboxList.add(new LunchBox("Chicken Cutlet Rice", "Western Food", 5.00));
 		lunchboxList.add(new LunchBox("Char Kuay Teow", "Asian Food", 4.00));
-
-		int option = 0;
-<<<<<<< HEAD
-
-		while (option != 4) {
-
-			LunchBoxMain.MainMenu();
-=======
-		int userType = 0;
-		
-		while (option != OPTION_QUIT) {
-			
-			userType = Helper.readInt("Student(1) /Parent(2) /Admin(3)> ");
-			
-			LunchBoxMain.menu();
->>>>>>> branch 'master' of https://github.com/Rikudola1235/C206_CaseStudy.git
-			option = Helper.readInt("Enter an option > ");
-
-			if (option == 1) {
-				// View Staff Menu
-				LunchBoxMain.StaffMenu();
-				option = Helper.readInt("Enter an option > ");
-
-				if (option == 1) {
-					// Monthly Menu
-					LunchBoxMain.StaffMenu1();
-					option = Helper.readInt("Enter an option > ");
-
-					if (option == 1) {
-						// Generate Monthly Menu
-					}
-
-					else if (option == 2) {
-						// View Monthly Menu
-					}
-
-					else if (option == 3) {
-						// Delete Monthly Menu
-					}
-				}
-
-				else if (option == 2) {
-					// Menu Items
-					LunchBoxMain.StaffMenu2();
-					option = Helper.readInt("Enter an option > ");
-
-					if (option == 1) {
-						// Add Menu Items
-					}
-
-					else if (option == 2) {
-						// View Menu Items
-					}
-
-					else if (option == 3) {
-						// Delete Menu Items
-					}
-				}
-
-				else if (option == 3) {
-					// Order Bill
-					LunchBoxMain.StaffMenu3();
-					option = Helper.readInt("Enter an option > ");
-
-					if (option == 1) {
-						// Add Order Bill
-					}
-
-					else if (option == 2) {
-						// View Order Bill
-					}
-
-					else if (option == 3) {
-						// Delete Order Bill
-					}
-				}
-
-			} else if (option == 2) {
-				// User Login
-				LunchBoxMain.UserMenu();
-				option = Helper.readInt("Enter an option > ");
-				
-				if (option == 1) {
-					//User Account
-					LunchBoxMain.UserMenu1();
-					option = Helper.readInt("Enter an option > ");
-					
-					if (option == 1) {
-						// Add User Account
-					}
-
-					else if (option == 2) {
-						// View User Account
-					}
-
-					else if (option == 3) {
-						// Delete User Account
-					}
-				}
-				else if (option == 2) {
-					//LunchBox Order
-					LunchBoxMain.UserMenu2();
-					option = Helper.readInt("Enter an option > ");
-					
-					if (option == 1) {
-						// Place LunchBox Order
-					}
-
-					else if (option == 2) {
-						// View LunchBox Order
-					}
-
-					else if (option == 3) {
-						// Delete LunchBox Order
-					}
-				}
-			}
-
-		}
 	}
-
-	private static void MainMenu() {
+	
+	public static void MainMenu() {
 		LunchBoxMain.setHeader("Login");
 		System.out.println("1. Staff Login");
 		System.out.println("2. User Login");
@@ -145,7 +26,7 @@ public class LunchBoxMain {
 		Helper.line(80, "-");
 	}
 
-	private static void StaffMenu() {
+	public static void StaffMenu() {
 		LunchBoxMain.setHeader("Staff");
 		System.out.println("1. Monthly Menu");
 		System.out.println("2. Menu Items");
@@ -154,7 +35,7 @@ public class LunchBoxMain {
 		Helper.line(80, "-");
 	}
 
-	private static void StaffMenu1() {
+	public static void StaffMenu1() {
 		LunchBoxMain.setHeader("Monthly Menu");
 		System.out.println("1. Create Monthly Menu");
 		System.out.println("2. View Monthly Menu");
@@ -163,7 +44,7 @@ public class LunchBoxMain {
 		Helper.line(80, "-");
 	}
 
-	private static void StaffMenu2() {
+	public static void StaffMenu2() {
 		LunchBoxMain.setHeader("Menu Items");
 		System.out.println("1. Add Menu Items");
 		System.out.println("2. View Menu Items");
@@ -172,7 +53,7 @@ public class LunchBoxMain {
 		Helper.line(80, "-");
 	}
 
-	private static void StaffMenu3() {
+	public static void StaffMenu3() {
 		LunchBoxMain.setHeader("Order Bills");
 		System.out.println("1. Add Order Bill");
 		System.out.println("2. View Order Bill");
@@ -181,7 +62,7 @@ public class LunchBoxMain {
 		Helper.line(80, "-");
 	}
 
-	private static void UserMenu() {
+	public static void UserMenu() {
 		// TODO Auto-generated method stub
 		LunchBoxMain.setHeader("User");
 		System.out.println("1. User Account");
@@ -190,7 +71,7 @@ public class LunchBoxMain {
 		Helper.line(80, "-");
 	}
 
-	private static void UserMenu1() {
+	public static void UserMenu1() {
 		LunchBoxMain.setHeader("User Account");
 		System.out.println("1. Add User Account");
 		System.out.println("2. View User Account");
@@ -199,7 +80,7 @@ public class LunchBoxMain {
 		Helper.line(80, "-");
 	}
 
-	private static void UserMenu2() {
+	public static void UserMenu2() {
 		LunchBoxMain.setHeader("School LunchBox APP");
 		System.out.println("1. Place LunchBox Order");
 		System.out.println("2. View LunchBox Order");
