@@ -12,8 +12,6 @@ public class Items {
 	    private String item;
 	    private String category;
 
-	 
-
 	    public Items(String item, String category) {
 	        super();
 	        this.item = item;

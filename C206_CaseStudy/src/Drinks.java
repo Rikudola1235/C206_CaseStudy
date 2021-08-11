@@ -11,8 +11,7 @@ public class Drinks {
 	    
 	    private String name;
 
-	 
-
+	    
 	    public Drinks(String name) {
 	        super();
 	        this.name = name;
