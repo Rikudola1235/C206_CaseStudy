@@ -39,9 +39,6 @@ public class C206_CaseStudyTest {
 	public void testViewAccount() {
 		
 		assertNotNull("Test if there is valid account arraylist to add to", accountList);
-		
-		
-		
 		assertEquals("Check of account list size is 3", accountList.size(),3);
 		
 	}

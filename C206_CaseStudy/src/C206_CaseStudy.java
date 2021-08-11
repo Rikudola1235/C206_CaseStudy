@@ -336,7 +336,6 @@ public class C206_CaseStudy {
 		
 	}
 	public static void addAccount(ArrayList<Account> accountList, Account a) {
-		
 		accountList.add(a);
 		System.out.println("User added!");
 	}

@@ -11,7 +11,6 @@
  *
  */
 public class Account {
-	
 	private String role;
 	private String username;
 	private String password;
