@@ -6,8 +6,14 @@ public class C206_CaseStudy {
 
 		ArrayList<LunchBox> lunchboxList = new ArrayList<LunchBox>();
 
-		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
+//		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
 
+		// accountList to store account
+		ArrayList<Account> accountList = new ArrayList<Account>();
+		//data
+		accountList.add(new Account("Parent", "parent1", "parentPW1", 20012001, 11110001));
+		accountList.add(new Account("Parent", "parent2", "parentPW2", 20022001, 11110002));
+		accountList.add(new Account("Parent", "parent3", "parentPW3", 20032001, 11110003));
 		
 		ArrayList<MonthlyMenu> monthlyList = new ArrayList<MonthlyMenu>();
 		
@@ -17,7 +23,7 @@ public class C206_CaseStudy {
 		
 
 		// add user account
-		userAcctList.add(new UserAccount(1, "Matthew", "T0313194c", "Student"));
+//		userAcctList.add(new UserAccount(1, "Matthew", "T0313194c", "Student"));
 
 		// add lunchbox to arraylist
 		lunchboxList.add(new LunchBox("Tuna Sandwich", "Vegetarian Food", 2.50));
@@ -163,7 +169,7 @@ public class C206_CaseStudy {
 					}
 
 					else if (option == 2) {
-						// View User Account
+						C206_CaseStudy.viewAccount(accountList);
 					}
 
 					else if (option == 3) {
@@ -312,6 +318,29 @@ public class C206_CaseStudy {
 		String output = String.format("%-5s %-20s %-20s %-20s\n", "DAY", "CATEGORY", "FOOD", "DRINK");
 		
 	}
+	
+	public static String retrieveAccount(ArrayList<Account> accountList) {
+		String output = "";
+		for (int i = 0; i < accountList.size(); i++) {
+			output += String.format("%-20s %-20s %-20s %-20s %-20s\n",accountList.get(i).getRole(),accountList.get(i).getUsername(),accountList.get(i).getContactNumber(),accountList.get(i).getStudentId(),accountList.get(i).getPassword());
+		}
+		return output;
+		
+	}
+	
+	public static void viewAccount(ArrayList<Account> accountList) {
+		C206_CaseStudy.setHeader("Account");
+		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "ROLE", "USERNAME", "CONTACT NUMBER", "STUDENT ID", "PASSWORD");
+		 output += retrieveAccount(accountList);
+		 System.out.println(output);
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 }
