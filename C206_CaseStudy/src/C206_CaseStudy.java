@@ -64,7 +64,7 @@ public class C206_CaseStudy {
 
 						if (option == 1) {
 							// Generate Monthly Menu
-							generateMonthlyMenu(monthlyList, drinkList, itemList);
+							createMonthlyMenu(monthlyList, drinkList, itemList);
 						}
 
 						else if (option == 2) {
@@ -379,7 +379,7 @@ public class C206_CaseStudy {
 	public static void generateMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
 			ArrayList<Items> itemList) {
 
-		if (monthlyList.isEmpty()) {
+//		if (monthlyList.isEmpty()) {
 			for (int i = 0; i < 5; i++) {
 				Random random = new Random();
 				int min = 0, max = 4;
@@ -393,14 +393,50 @@ public class C206_CaseStudy {
 				
 			}
 			
+//			System.out.println("Monthly Menu have been generated!");
+//		}
+//		
+//		else {
+//			System.out.println("Monthly Menu have already been generated!");
+//		}
+	
+
+	}
+	
+	public static void createMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
+			ArrayList<Items> itemList) {
+		char choice = Helper.readChar("Would you like to generate Monthly Menu automatically (y/n) > ");
+		
+		if (monthlyList.isEmpty()) {
+			if (choice == 'y' || choice == 'Y') {
+				generateMonthlyMenu(monthlyList, drinkList, itemList);
+			}
+			
+			else if (choice == 'n' || choice == 'N') {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("Fill in Monthly Menu for Day " + i+1);
+					String cat = Helper.readString("Category > ");
+					String food = Helper.readString("Food Name > ");
+					String drink = Helper.readString("Drink Name > ");
+					monthlyList.add(new MonthlyMenu(i+1, cat, food, drink));
+				}
+			}
+			
 			System.out.println("Monthly Menu have been generated!");
 		}
 		
 		else {
 			System.out.println("Monthly Menu have already been generated!");
 		}
+	}
 	
-
+	public static String retrieveMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
+		String output = "";
+		for (int i = 0; i < monthlyList.size(); i++) {
+			output += String.format("%-5d %-20s %-20s %-20s\n", monthlyList.get(i).getDay(), monthlyList.get(i).getCat(),
+					monthlyList.get(i).getFood(), monthlyList.get(i).getDrink());
+		}
+		return output;
 	}
 	
 	public static void deleteMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
