@@ -370,54 +370,55 @@ public class C206_CaseStudy {
 		output += retrieveAllLunchBoxes(lunchboxList);
 		System.out.println(output);
 	}
+	
+	public static int doRandom(int min, int max) {
+	    Random random = new Random();
+	    return random.nextInt(max - min) + min;
+	}
 
 	public static void generateMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
 			ArrayList<Items> itemList) {
-//		Random random = new Random();
-//		int r = random.nextInt(itemList.size());
-//		int u = random.nextInt(drinkList.size());
-//		
-//		
-//		for (int i = 1; i < 6; i++) {
-//			monthlyList.add(new MonthlyMenu(i, itemList.get(r).getCategory(), itemList.get(r).getItem(), drinkList.get(u).getName()));
-//			
-//		}
 
-//		for (int i = 0; i < 5; i++)
-		for (int i = 0; i < 5; i++) {
-			Items m = itemList.get(i);
-			Drinks d = drinkList.get(i);
-			monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
-		}
-//		monthlyList.add(new MonthlyMenu(1, itemList.get(0).getCategory(), itemList.get(0).getItem(), drinkList.get(0).getName()));
-//		monthlyList.add(new MonthlyMenu(2, itemList.get(1).getCategory(), itemList.get(1).getItem(), drinkList.get(1).getName()));
-//		monthlyList.add(new MonthlyMenu(3, itemList.get(2).getCategory(), itemList.get(2).getItem(), drinkList.get(2).getName()));
-//		monthlyList.add(new MonthlyMenu(4, itemList.get(3).getCategory(), itemList.get(3).getItem(), drinkList.get(3).getName()));
-//		monthlyList.add(new MonthlyMenu(5, itemList.get(4).getCategory(), itemList.get(4).getItem(), drinkList.get(4).getName()));
-//		
-		System.out.println("Monthly Menu have been generated!");
-	}
-
-	public static void deleteMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
-		int i = 1;
-		String dayNo = Helper.readString("Enter day to delete (1-5) > ");
-
-		if (monthlyList.size() >= 1) {
-			for (MonthlyMenu m : monthlyList) {
-				if (dayNo.equals(m.getDay())) {
-					monthlyList.remove(i);
-				}
-				i++;
+		if (monthlyList.isEmpty()) {
+			for (int i = 0; i < 5; i++) {
+				Random random = new Random();
+				int min = 0, max = 4;
+				
+				int r1 = random.nextInt((max - min) + 1) + min;
+				int r2 = random.nextInt((max - min) + 1) + min;
+				
+				Items m = itemList.get(r1);
+				Drinks d = drinkList.get(r2);
+				monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
+				
 			}
-		} else if (monthlyList.size() == 0) {
-			System.out.println("There is no Monthly Menu in the list. Please generate a Monthly Menu!");
+			
+			System.out.println("Monthly Menu have been generated!");
+		}
+		
+		else {
+			System.out.println("Monthly Menu have already been generated!");
+		}
+	
+
+	}
+	
+	public static void deleteMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
+		
+		if (monthlyList.isEmpty() == false) {
+			monthlyList.removeAll(monthlyList);
+			
+		System.out.println("Monthly Menu have been deleted. Please generate a new one for the month!");
+			
+		} else {
+			System.out.println("Monthly Menu is not available. Please generate a Monthly Menu!");
 		}
 
 	}
 
 	public static void viewMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
 
-		if (monthlyList.size() >= 1) {
+		if (monthlyList.isEmpty() == false) {
 			String output = String.format("%-5s %-20s %-20s %-20s\n", "DAY", "CATEGORY", "FOOD", "DRINK");
 
 			for (MonthlyMenu m : monthlyList) {
@@ -427,8 +428,8 @@ public class C206_CaseStudy {
 			System.out.println(output);
 		}
 
-		else if (monthlyList.size() == 0) {
-			System.out.println("Monthly Menu is empty. Please Generate a new Monthly Menu!");
+		else {
+			System.out.println("Monthly Menu is not available. Please Generate a new Monthly Menu!");
 		}
 
 	}
