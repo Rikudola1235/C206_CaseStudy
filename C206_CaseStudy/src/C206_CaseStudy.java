@@ -55,44 +55,45 @@ public class C206_CaseStudy {
 				if (option == 1) {
 					// View Staff Menu
 					C206_CaseStudy.StaffMenu();
-					option = Helper.readInt("Enter an option > ");
+					int staffoption = Helper.readInt("Enter an option > ");
 
-					if (option == 1) {
+					if (staffoption == 1) {
 						// Monthly Menu
 						C206_CaseStudy.StaffMenu1();
-						option = Helper.readInt("Enter an option > ");
+						int mmoption = Helper.readInt("Enter an option > ");
 
-						if (option == 1) {
+						if (mmoption == 1) {
 							// Generate Monthly Menu
 							createMonthlyMenu(monthlyList, drinkList, itemList);
 						}
 
-						else if (option == 2) {
+						else if (mmoption == 2) {
 							// View Monthly Menu
 							viewMonthlyMenu(monthlyList);
 						}
 
-						else if (option == 3) {
+						else if (mmoption == 3) {
 							// Delete Monthly Menu
 							deleteMonthlyMenu(monthlyList);
 						}
 					}
+				
 
-					else if (option == 2) {
+					else if (staffoption == 2) {
 						// Menu Items
 						C206_CaseStudy.StaffMenu2();
-						option = Helper.readInt("Enter an option > ");
+						int moption = Helper.readInt("Enter an option > ");
 
-						if (option == 1) {
+						if (moption == 1) {
 							// Add Menu Items
 							C206_CaseStudy.ItemsMenu();
-							option = Helper.readInt("Enter an option > ");
+							int addoption1 = Helper.readInt("Enter an option > ");
 
-							if (option == 1) {
+							if (addoption1 == 1) {
 								String drinks = Helper.readString("Add a drink > ");
 								drinkList.add(new Drinks(drinks));
 								System.out.println("Drinks added successfully");
-							} else if (option == 2) {
+							} else if (addoption1 == 2) {
 								String food = Helper.readString("Add a food > ");
 								String category = Helper.readString("Category > ");
 								itemList.add(new Items(food, category));
@@ -100,7 +101,7 @@ public class C206_CaseStudy {
 							}
 						}
 
-						else if (option == 2) {
+						else if (moption == 2) {
 							int a = 0;
 							int b = 0;
 							// View Menu Items
@@ -118,11 +119,13 @@ public class C206_CaseStudy {
 							}
 						}
 
-						else if (option == 3) {
+						else if (moption == 3) {
 							int a = 0;
 							// Delete Menu Items
 							C206_CaseStudy.ItemsMenu();
-							if (option == 1) {
+							int deleteoption1 = Helper.readInt("Enter an option > ");
+							
+							if (deleteoption1 == 1) {
 								String item = Helper.readString("Enter drink name to delete > ");
 								for (Drinks d : drinkList) {
 									if (item.equals(d.getName())) {
@@ -130,7 +133,7 @@ public class C206_CaseStudy {
 									}
 									a++;
 								}
-							} else if (option == 2) {
+							} else if (deleteoption1 == 2) {
 								String item = Helper.readString("Enter food name to delete > ");
 								for (Items i : itemList) {
 									if (item.equals(i.getItem())) {
@@ -141,132 +144,90 @@ public class C206_CaseStudy {
 							}
 						}
 
-					} else if (option == 3) {
+					} else if (staffoption == 3) {
 						// Order Bill
 						C206_CaseStudy.StaffMenu3();
-						option = Helper.readInt("Enter an option > ");
+						int oboption = Helper.readInt("Enter an option > ");
 
-						if (option == 1) {
+						if (oboption == 1) {
 							// Add Order Bill
 						}
 
-						else if (option == 2) {
+						else if (oboption == 2) {
 							// View Order Bill
 						}
 
-						else if (option == 3) {
+						else if (oboption == 3) {
 							// Delete Order Bill
 						}
 					}
-					C206_CaseStudy.MainMenu();
-					option = Helper.readInt("Enter an option > ");
+					
+					else if (staffoption == 4) {
+						C206_CaseStudy.MainMenu();
+						option = Helper.readInt("Enter an option > ");
+					}
+		
 				} else if (option == 2) {
 					// User Login
 					C206_CaseStudy.UserMenu();
-					option = Helper.readInt("Enter an option > ");
+					int useroption = Helper.readInt("Enter an option > ");
 
-					if (option == 1) {
+					if (useroption == 1) {
 						// User Account
 						C206_CaseStudy.UserMenu1();
-						option = Helper.readInt("Enter an option > ");
+						int accoption = Helper.readInt("Enter an option > ");
 
-						if (option == 1) {
+						if (accoption == 1) {
 							// Add User Account
 							Account acc = addInputAccount();
 							C206_CaseStudy.addAccount(accountList, acc);
 
 						}
 
-						else if (option == 2) {
+						else if (accoption == 2) {
 							// View User Account
 							C206_CaseStudy.viewAccount(accountList);
 						}
 
-						else if (option == 3) {
+						else if (accoption == 3) {
 							// Delete User Account
 							C206_CaseStudy.delectAccount(accountList);
 						}
-					} else if (option == 2) {
+					} else if (useroption == 2) {
 						// LunchBox Order
 						C206_CaseStudy.UserMenu2();
-						option = Helper.readInt("Enter an option > ");
+						int loOption = Helper.readInt("Enter an option > ");
 
-						if (option == 1) {
+						if (loOption == 1) {
 							// Place LunchBox Order
 						}
 
-						else if (option == 2) {
+						else if (loOption == 2) {
 							// View LunchBox Order
 						}
 
-						else if (option == 3) {
+						else if (loOption == 3) {
 							// Delete LunchBox Order
 						}
 					}
-					C206_CaseStudy.MainMenu();
-					option = Helper.readInt("Enter an option > ");
-				} else if (option == 3) {
-					// Order Bill
-					C206_CaseStudy.StaffMenu3();
-					option = Helper.readInt("Enter an option > ");
-
-					if (option == 1) {
-						// Add Order Bill
+					
+					else if (useroption == 3) {
+						C206_CaseStudy.MainMenu();
+						option = Helper.readInt("Enter an option > ");
 					}
-
-					else if (option == 2) {
-						// View Order Bill
-					}
-
-					else if (option == 3) {
-						// Delete Order Bill
-					}
-				}
-
-			}
-			if (option == 2) {
-				// User Login
-				C206_CaseStudy.UserMenu();
-				option = Helper.readInt("Enter an option > ");
-
-				if (option == 1) {
-					// User Account
-
-					if (option == 1) {
-
-					}
-
-					else if (option == 2) {
-						// view account
-						C206_CaseStudy.viewAccount(accountList);
-					}
-
-					else if (option == 3) {
-						// Delete User Account
-					}
-				} else if (option == 2) {
-					// LunchBox Order
-					C206_CaseStudy.UserMenu2();
-					option = Helper.readInt("Enter an option > ");
-
-					if (option == 1) {
-						// Place LunchBox Order
-					}
-
-					else if (option == 2) {
-						// View LunchBox Order
-					}
-
-					else if (option == 3) {
-						// Delete LunchBox Order
-					}
+				} 
+				
+				else {
 					System.out.println("Goodbye!");
 					break;
 				}
 			}
-
-		}
+		} 
+		
 	}
+			
+
+
 
 	public static void MainMenu() {
 		C206_CaseStudy.setHeader("Login");
