@@ -15,13 +15,11 @@ public class Account {
 	private String role;
 	private String username;
 	private String password;
-	private int studentId;
 	private int contactNumber;
-	public Account(String role, String username, String password, int studentId, int contactNumber) {
+	public Account(String role, String username, String password, int contactNumber) {
 		this.role = role;
 		this.username = username;
 		this.password = password;
-		this.studentId = studentId;
 		this.contactNumber = contactNumber;
 	}
 	public String getRole() {
@@ -41,12 +39,6 @@ public class Account {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public int getStudentId() {
-		return studentId;
-	}
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
 	}
 	public int getContactNumber() {
 		return contactNumber;

@@ -12,9 +12,9 @@ public class C206_CaseStudy {
 		// accountList to store account
 		ArrayList<Account> accountList = new ArrayList<Account>();
 		//data
-		accountList.add(new Account("Parent", "parent1", "parentPW1", 20012001, 11110001));
-		accountList.add(new Account("Parent", "parent2", "parentPW2", 20022001, 11110002));
-		accountList.add(new Account("Parent", "parent3", "parentPW3", 20032001, 11110003));
+		accountList.add(new Account("Parent", "parent1", "parentPW1", 11110001));
+		accountList.add(new Account("Parent", "parent2", "parentPW2", 11110002));
+		accountList.add(new Account("Parent", "parent3", "parentPW3", 11110003));
 		
 		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
 
@@ -174,10 +174,14 @@ public class C206_CaseStudy {
 
 						if (option == 1) {
 							// Add User Account
+							Account acc = addInputAccount();
+							C206_CaseStudy.addAccount(accountList, acc);
+							
 						}
 
 						else if (option == 2) {
 							// View User Account
+							C206_CaseStudy.viewAccount(accountList);
 						}
 
 						else if (option == 3) {
@@ -228,14 +232,14 @@ public class C206_CaseStudy {
 
 				if (option == 1) {
 					// User Account
-					C206_CaseStudy.UserMenu1();
-					option = Helper.readInt("Enter an option > ");
+					
 
 					if (option == 1) {
-						// Add User Account
+						
 					}
 
 					else if (option == 2) {
+						//view account
 						C206_CaseStudy.viewAccount(accountList);
 					}
 
@@ -402,7 +406,7 @@ public class C206_CaseStudy {
 
 		if (monthlyList.size() >= 1) {
 			for (MonthlyMenu m : monthlyList) {
-				if (dayNo.equals(m.getDay())) {
+				if (dayNo.equals(m.getDrink())) {
 					monthlyList.remove(i);
 				}
 				i++;
@@ -420,7 +424,7 @@ public class C206_CaseStudy {
 
 			for (MonthlyMenu m : monthlyList) {
 
-				output += String.format("%-5d %-20s %-20s %-20s\n", m.getDay(), m.getCat(), m.getFood(), m.getDrink());
+				output += String.format("%-5d %-20s %-20s %-20s\n", m.getDrink(), m.getCat(), m.getFood(), m.getDrink());
 			}
 			System.out.println(output);
 		}
@@ -435,7 +439,7 @@ public class C206_CaseStudy {
 	public static String retrieveAccount(ArrayList<Account> accountList) {
 		String output = "";
 		for (int i = 0; i < accountList.size(); i++) {
-			output += String.format("%-20s %-20s %-20s %-20s %-20s\n",accountList.get(i).getRole(),accountList.get(i).getUsername(),accountList.get(i).getContactNumber(),accountList.get(i).getStudentId(),accountList.get(i).getPassword());
+			output += String.format("%-20s %-20s %-20s %-20s\n",accountList.get(i).getRole(),accountList.get(i).getUsername(),accountList.get(i).getContactNumber(),accountList.get(i).getPassword());
 		}
 		return output;
 		
@@ -443,13 +447,24 @@ public class C206_CaseStudy {
 	
 	public static void viewAccount(ArrayList<Account> accountList) {
 		C206_CaseStudy.setHeader("Account");
-		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "ROLE", "USERNAME", "CONTACT NUMBER", "STUDENT ID", "PASSWORD");
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "ROLE", "USERNAME", "CONTACT NUMBER", "PASSWORD");
 		 output += retrieveAccount(accountList);
 		 System.out.println(output);
 		
 	}
-	public static void addAccount(ArrayList<Account> accountList, Account a) {
-		accountList.add(a);
+	
+	public static Account addInputAccount() {
+		String role = Helper.readString("Enter User role > ");
+		String username = Helper.readString("Enter Username > ");
+		int contactNumber = Helper.readInt("Enter User Contact Number > "); 
+		String pw = Helper.readString("Enter User Password > ");
+		
+		Account acc = new Account(role,username, pw,contactNumber);
+		return acc;
+		
+	}
+	public static void addAccount(ArrayList<Account> accountList, Account acc) {
+		accountList.add(acc);
 		System.out.println("User added!");
 	}
 
