@@ -461,12 +461,9 @@ public class C206_CaseStudy {
 		
 		Account acc = new Account(role,username, pw,contactNumber);
 		return acc;
-		
 	}
 	public static void addAccount(ArrayList<Account> accountList, Account acc) {
 		accountList.add(acc);
 		System.out.println("User added!");
 	}
-
-	
 }
