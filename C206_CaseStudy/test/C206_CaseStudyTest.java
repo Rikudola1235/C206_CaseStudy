@@ -23,10 +23,6 @@ public class C206_CaseStudyTest {
 		accountList = new ArrayList<Account>();
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void c206_test() {
 		// fail("Not yet implemented");
@@ -35,7 +31,7 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void testViewAccount() {
-		//Navin's testViewAccount
+		// Navin's testViewAccount
 		// Account list is not null, so that can add a new Account
 		assertNotNull("Test if there is valid account arraylist to add to", accountList);
 
@@ -79,7 +75,7 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void testAddAccount() {
-		//Navin's testAddAccount
+		// Navin's testAddAccount
 		// Account list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Account arraylist to add to", accountList);
 
@@ -103,6 +99,50 @@ public class C206_CaseStudyTest {
 
 		// The Account just added is as same as the third item of the list
 		assertSame("Test that Account is added same as 3rd item of the list?", parent3, accountList.get(2));
+	}
+
+	@Test
+	public void testDeleteAccount() {
+
+		// Account list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Account arraylist to add to", accountList);
+
+		// Given an empty list, after adding 1 item, the size of the list is 1
+		C206_CaseStudy.addAccount(accountList, parent1);
+		assertEquals("Check of account list size is 1", accountList.size(), 1);
+
+		// deletes object that corresponds to the username from the ArrayList
+		boolean flag = C206_CaseStudy.doDeleteAccount(accountList, "parent1");
+		assertTrue("Test to see if parent 1 can be deleted", flag);
+
+		// Given an empty list, after adding 1 item, the size of the list is 2
+		C206_CaseStudy.addAccount(accountList, parent2);
+		assertEquals("Check of account list size is 2", accountList.size(), 2);
+
+		// deletes object that corresponds to the username from the ArrayList
+		flag = C206_CaseStudy.doDeleteAccount(accountList, "parent2");
+		assertTrue("Test to see if parent 2 can be deleted", flag);
+
+		// Given an empty list, after adding 1 item, the size of the list is 3
+		C206_CaseStudy.addAccount(accountList, parent3);
+		assertEquals("Check of account list size is 3", accountList.size(), 3);
+
+		// deletes object that corresponds to the username from the ArrayList
+		flag = C206_CaseStudy.doDeleteAccount(accountList, "parent3");
+		assertTrue("Test to see if parent 3 can be deleted", flag);
+
+		// error condition
+		flag = C206_CaseStudy.doDeleteAccount(accountList, "error");
+		assertFalse("Test to see if a non-existing account can be deleted", flag);
+
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		parent1 = null;
+		parent2 = null;
+		parent3 = null;
+		accountList = null;
 	}
 
 }

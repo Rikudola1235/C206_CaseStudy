@@ -479,16 +479,16 @@ public class C206_CaseStudy {
 		}
 		return flag;
 	}
-	
+
 	public static void delectAccount(ArrayList<Account> accountList) {
-		
+
 		String username = Helper.readString("Enter Username: ");
-		
-		boolean flag = doDeleteAccount(accountList,username);
-		
-		if(flag == true) {
-			for(int i = 0;i < accountList.size();i++) {
-				if(username.equals(accountList.get(i).getUsername())) {
+
+		boolean flag = doDeleteAccount(accountList, username);
+
+		if (flag == true) {
+			for (int i = 0; i < accountList.size(); i++) {
+				if (username.equals(accountList.get(i).getUsername())) {
 					accountList.remove(i);
 				}
 			}
