@@ -339,8 +339,7 @@ public class C206_CaseStudy {
 
 	public static void generateMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
 			ArrayList<Items> itemList) {
-
-//		if (monthlyList.isEmpty()) {
+		
 			for (int i = 0; i < 5; i++) {
 				Random random = new Random();
 				int min = 0, max = 4;
@@ -353,15 +352,6 @@ public class C206_CaseStudy {
 				monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
 				
 			}
-			
-//			System.out.println("Monthly Menu have been generated!");
-//		}
-//		
-//		else {
-//			System.out.println("Monthly Menu have already been generated!");
-//		}
-	
-
 	}
 	
 	public static void createMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
