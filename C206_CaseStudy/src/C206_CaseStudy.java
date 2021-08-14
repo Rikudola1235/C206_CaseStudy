@@ -405,9 +405,10 @@ public class C206_CaseStudy {
 	
 	public static void createMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
 			ArrayList<Items> itemList) {
-		char choice = Helper.readChar("Would you like to generate Monthly Menu automatically (y/n) > ");
 		
 		if (monthlyList.isEmpty()) {
+			char choice = Helper.readChar("Would you like to generate Monthly Menu automatically (y/n) > ");
+
 			if (choice == 'y' || choice == 'Y') {
 				generateMonthlyMenu(monthlyList, drinkList, itemList);
 			}
