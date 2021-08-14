@@ -406,7 +406,7 @@ public class C206_CaseStudy {
 
 		if (monthlyList.size() >= 1) {
 			for (MonthlyMenu m : monthlyList) {
-				if (dayNo.equals(m.getDrink())) {
+				if (dayNo.equals(m.getDay())) {
 					monthlyList.remove(i);
 				}
 				i++;
@@ -424,7 +424,7 @@ public class C206_CaseStudy {
 
 			for (MonthlyMenu m : monthlyList) {
 
-				output += String.format("%-5d %-20s %-20s %-20s\n", m.getDrink(), m.getCat(), m.getFood(), m.getDrink());
+				output += String.format("%-5d %-20s %-20s %-20s\n", m.getDay(), m.getCat(), m.getFood(), m.getDrink());
 			}
 			System.out.println(output);
 		}
