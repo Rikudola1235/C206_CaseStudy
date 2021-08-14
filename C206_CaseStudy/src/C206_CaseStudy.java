@@ -415,7 +415,8 @@ public class C206_CaseStudy {
 			
 			else if (choice == 'n' || choice == 'N') {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("Fill in Monthly Menu for Day " + i+1);
+					int u = 1 + i;
+					System.out.println("Fill in Monthly Menu for Day " + u);
 					String cat = Helper.readString("Category > ");
 					String food = Helper.readString("Food Name > ");
 					String drink = Helper.readString("Drink Name > ");
