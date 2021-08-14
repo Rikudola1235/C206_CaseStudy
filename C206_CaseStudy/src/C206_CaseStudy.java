@@ -11,11 +11,11 @@ public class C206_CaseStudy {
 
 		// accountList to store account
 		ArrayList<Account> accountList = new ArrayList<Account>();
-		//data
+		// data
 		accountList.add(new Account("Parent", "parent1", "parentPW1", 11110001));
 		accountList.add(new Account("Parent", "parent2", "parentPW2", 11110002));
 		accountList.add(new Account("Parent", "parent3", "parentPW3", 11110003));
-		
+
 		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
 
 		ArrayList<MonthlyMenu> monthlyList = new ArrayList<MonthlyMenu>();
@@ -87,7 +87,7 @@ public class C206_CaseStudy {
 							// Add Menu Items
 							C206_CaseStudy.ItemsMenu();
 							option = Helper.readInt("Enter an option > ");
-							
+
 							if (option == 1) {
 								String drinks = Helper.readString("Add a drink > ");
 								drinkList.add(new Drinks(drinks));
@@ -141,8 +141,7 @@ public class C206_CaseStudy {
 							}
 						}
 
-					}
-					else if (option == 3) {
+					} else if (option == 3) {
 						// Order Bill
 						C206_CaseStudy.StaffMenu3();
 						option = Helper.readInt("Enter an option > ");
@@ -161,8 +160,7 @@ public class C206_CaseStudy {
 					}
 					C206_CaseStudy.MainMenu();
 					option = Helper.readInt("Enter an option > ");
-				}
-				else if (option == 2) {
+				} else if (option == 2) {
 					// User Login
 					C206_CaseStudy.UserMenu();
 					option = Helper.readInt("Enter an option > ");
@@ -176,7 +174,7 @@ public class C206_CaseStudy {
 							// Add User Account
 							Account acc = addInputAccount();
 							C206_CaseStudy.addAccount(accountList, acc);
-							
+
 						}
 
 						else if (option == 2) {
@@ -186,6 +184,7 @@ public class C206_CaseStudy {
 
 						else if (option == 3) {
 							// Delete User Account
+							C206_CaseStudy.delectAccount(accountList);
 						}
 					} else if (option == 2) {
 						// LunchBox Order
@@ -206,8 +205,7 @@ public class C206_CaseStudy {
 					}
 					C206_CaseStudy.MainMenu();
 					option = Helper.readInt("Enter an option > ");
-				}
-				else if (option == 3) {
+				} else if (option == 3) {
 					// Order Bill
 					C206_CaseStudy.StaffMenu3();
 					option = Helper.readInt("Enter an option > ");
@@ -215,7 +213,7 @@ public class C206_CaseStudy {
 					if (option == 1) {
 						// Add Order Bill
 					}
-					
+
 					else if (option == 2) {
 						// View Order Bill
 					}
@@ -225,21 +223,21 @@ public class C206_CaseStudy {
 					}
 				}
 
-			}  if (option == 2) {
+			}
+			if (option == 2) {
 				// User Login
 				C206_CaseStudy.UserMenu();
 				option = Helper.readInt("Enter an option > ");
 
 				if (option == 1) {
 					// User Account
-					
 
 					if (option == 1) {
-						
+
 					}
 
 					else if (option == 2) {
-						//view account
+						// view account
 						C206_CaseStudy.viewAccount(accountList);
 					}
 
@@ -435,35 +433,67 @@ public class C206_CaseStudy {
 
 	}
 
-	
 	public static String retrieveAccount(ArrayList<Account> accountList) {
 		String output = "";
 		for (int i = 0; i < accountList.size(); i++) {
-			output += String.format("%-20s %-20s %-20s %-20s\n",accountList.get(i).getRole(),accountList.get(i).getUsername(),accountList.get(i).getContactNumber(),accountList.get(i).getPassword());
+			output += String.format("%-20s %-20s %-20s %-20s\n", accountList.get(i).getRole(),
+					accountList.get(i).getUsername(), accountList.get(i).getContactNumber(),
+					accountList.get(i).getPassword());
 		}
 		return output;
-		
+
 	}
-	
+
 	public static void viewAccount(ArrayList<Account> accountList) {
 		C206_CaseStudy.setHeader("Account");
 		String output = String.format("%-20s %-20s %-20s %-20s\n", "ROLE", "USERNAME", "CONTACT NUMBER", "PASSWORD");
-		 output += retrieveAccount(accountList);
-		 System.out.println(output);
-		
+		output += retrieveAccount(accountList);
+		System.out.println(output);
+
 	}
-	
+
 	public static Account addInputAccount() {
 		String role = Helper.readString("Enter User role > ");
 		String username = Helper.readString("Enter Username > ");
-		int contactNumber = Helper.readInt("Enter User Contact Number > "); 
+		int contactNumber = Helper.readInt("Enter User Contact Number > ");
 		String pw = Helper.readString("Enter User Password > ");
-		
-		Account acc = new Account(role,username, pw,contactNumber);
+
+		Account acc = new Account(role, username, pw, contactNumber);
 		return acc;
 	}
+
 	public static void addAccount(ArrayList<Account> accountList, Account acc) {
 		accountList.add(acc);
 		System.out.println("User added!");
 	}
+
+	public static boolean doDeleteAccount(ArrayList<Account> accountList, String username) {
+		boolean flag = false;
+
+		for (int i = 0; i < accountList.size(); i++) {
+			String getUName = accountList.get(i).getUsername();
+
+			if (username.equals(getUName)) {
+				flag = true;
+			}
+		}
+		return flag;
+	}
+	
+	public static void delectAccount(ArrayList<Account> accountList) {
+		
+		String username = Helper.readString("Enter Username: ");
+		
+		boolean flag = doDeleteAccount(accountList,username);
+		
+		if(flag == true) {
+			for(int i = 0;i < accountList.size();i++) {
+				if(username.equals(accountList.get(i).getUsername())) {
+					accountList.remove(i);
+				}
+			}
+			System.out.println("User account has been deleted!");
+		}
+	}
+
 }
