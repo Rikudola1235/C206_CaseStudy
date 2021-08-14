@@ -354,6 +354,18 @@ public class C206_CaseStudy {
 			}
 	}
 	
+	public static MonthlyMenu addInputMonthlyMenu() {
+
+			int day = Helper.readInt("Day > ");
+			String cat = Helper.readString("Category > ");
+			String food = Helper.readString("Food Name > ");
+			String drink = Helper.readString("Drink Name > ");
+			MonthlyMenu mMenu = new MonthlyMenu(day, cat, food, drink);
+			
+			return mMenu;		
+		
+	}
+	
 	public static void createMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
 			ArrayList<Items> itemList) {
 		
@@ -368,10 +380,8 @@ public class C206_CaseStudy {
 				for (int i = 0; i < 5; i++) {
 					int u = 1 + i;
 					System.out.println("\nFill in Monthly Menu for Day " + u);
-					String cat = Helper.readString("Category > ");
-					String food = Helper.readString("Food Name > ");
-					String drink = Helper.readString("Drink Name > ");
-					monthlyList.add(new MonthlyMenu(i+1, cat, food, drink));
+					MonthlyMenu mMenu = addInputMonthlyMenu();
+					monthlyList.add(mMenu);
 				}
 			}
 			
