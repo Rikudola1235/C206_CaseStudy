@@ -393,14 +393,6 @@ public class C206_CaseStudy {
 		}
 	}
 	
-	public static String retrieveMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
-		String output = "";
-		for (int i = 0; i < monthlyList.size(); i++) {
-			output += String.format("%-5d %-20s %-20s %-20s\n", monthlyList.get(i).getDay(), monthlyList.get(i).getCat(),
-					monthlyList.get(i).getFood(), monthlyList.get(i).getDrink());
-		}
-		return output;
-	}
 	
 	public static void deleteMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
 		
@@ -414,16 +406,22 @@ public class C206_CaseStudy {
 		}
 
 	}
+	
+	public static String retrieveMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
+		String output = "";
+		for (int i = 0; i < monthlyList.size(); i++) {
+			output += String.format("%-5d %-20s %-20s %-20s\n", monthlyList.get(i).getDay(), monthlyList.get(i).getCat(),
+					monthlyList.get(i).getFood(), monthlyList.get(i).getDrink());
+		}
+		return output;
+	}
 
 	public static void viewMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
 
 		if (monthlyList.isEmpty() == false) {
 			String output = String.format("%-5s %-20s %-20s %-20s\n", "DAY", "CATEGORY", "FOOD", "DRINK");
 
-			for (MonthlyMenu m : monthlyList) {
-
-				output += String.format("%-5d %-20s %-20s %-20s\n", m.getDay(), m.getCat(), m.getFood(), m.getDrink());
-			}
+			output += retrieveMonthlyMenu(monthlyList);
 			System.out.println(output);
 		}
 
