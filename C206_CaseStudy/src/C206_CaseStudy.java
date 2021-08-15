@@ -110,56 +110,27 @@ public class C206_CaseStudy {
 
 							if (addoption1 == 1) {
 								String drinks = Helper.readString("Add a drink > ");
-								drinkList.add(new Drinks(drinks));
-								System.out.println("Drinks added successfully");
+								addDrinkItem(drinkList, drinks);
 							} else if (addoption1 == 2) {
 								String food = Helper.readString("Add a food > ");
 								String category = Helper.readString("Category > ");
-								itemList.add(new Items(food, category));
-								System.out.println("Food added successfully");
+								addFoodItem(itemList, food, category);
 							}
 						}
 
 						else if (moption == 2) {
-							int a = 0;
-							int b = 0;
 							// View Menu Items
-
-							System.out.println("Food Item: ");
-							for (Items i : itemList) {
-								a++;
-								System.out.println(a + ". " + i.getItem());
-							}
-
-							System.out.println("\nDrink Item: ");
-							for (Drinks d : drinkList) {
-								b++;
-								System.out.println(b + ". " + d.getName());
-							}
+							viewMenuItem(itemList, drinkList);
 						}
 
 						else if (moption == 3) {
-							int a = 0;
-							// Delete Menu Items
-							C206_CaseStudy.ItemsMenu();
+							C206_CaseStudy.DeleteMenu();
 							int deleteoption1 = Helper.readInt("Enter an option > ");
 
 							if (deleteoption1 == 1) {
-								String item = Helper.readString("Enter drink name to delete > ");
-								for (Drinks d : drinkList) {
-									if (item.equals(d.getName())) {
-										drinkList.remove(a);
-									}
-									a++;
-								}
+								deleteDrinkItem(drinkList);
 							} else if (deleteoption1 == 2) {
-								String item = Helper.readString("Enter food name to delete > ");
-								for (Items i : itemList) {
-									if (item.equals(i.getItem())) {
-										itemList.remove(a);
-									}
-									a++;
-								}
+								deleteFoodItem(itemList);
 							}
 						}
 
@@ -323,6 +294,14 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("Item Type");
 		System.out.println("1. Add Drinks");
 		System.out.println("2. Add Food");
+		System.out.println("3. Quit");
+		Helper.line(80, "-");
+	}
+	
+	public static void DeleteMenu() {
+		C206_CaseStudy.setHeader("Item Type");
+		System.out.println("1. Delete Drinks");
+		System.out.println("2. Delete Food");
 		System.out.println("3. Quit");
 		Helper.line(80, "-");
 	}
@@ -490,6 +469,95 @@ public class C206_CaseStudy {
 				}
 			}
 			System.out.println("User account has been deleted!");
+		}
+	}
+	
+	public static boolean doDeleteDrink(ArrayList<Drinks> drinkList, String drinks) {
+		boolean check = false;
+
+		for (int i = 0; i < drinkList.size(); i++) {
+			Drinks d = drinkList.get(i);
+			if (drinks.equals(d.getName())) {
+				check = true;
+				break;
+			}
+		}
+
+		return check;
+	}
+
+	public static boolean doDeleteFood(ArrayList<Items> itemList, String item) {
+		boolean check = false;
+
+		for (int i = 0; i < itemList.size(); i++) {
+			Items a = itemList.get(i);
+			if (item.equals(a.getItem())) {
+				check = true;
+				break;
+			}
+		}
+
+		return check;
+	}
+
+	public static void addDrinkItem(ArrayList<Drinks> drinkList, String drinks) {
+		drinkList.add(new Drinks(drinks));
+		System.out.println("Drinks added successfully");
+	}
+
+	public static void addFoodItem(ArrayList<Items> itemList, String food, String category) {
+		itemList.add(new Items(food, category));
+		System.out.println("Food added successfully");
+	}
+
+	public static void deleteDrinkItem(ArrayList<Drinks> drinkList) {
+		String item = Helper.readString("Enter drink name to delete > ");
+
+		boolean check = doDeleteDrink(drinkList, item);
+
+		if (check == true) {
+			for (int i = 0; i < drinkList.size(); i++) {
+				Drinks d = drinkList.get(i);
+				if (item.equals(d.getName())) {
+					drinkList.remove(i);
+					break;
+				}
+			}
+		}
+		System.out.println("Drink has been deleted.");
+	}
+
+	public static void deleteFoodItem(ArrayList<Items> itemList) {
+		String item = Helper.readString("Enter food name to delete > ");
+
+		boolean check = doDeleteFood(itemList, item);
+
+		if (check == true) {
+			for (int i = 0; i < itemList.size(); i++) {
+				Items a = itemList.get(i);
+				if (item.equals(a.getItem())) {
+					itemList.remove(i);
+					break;
+				}
+			}
+		}
+		System.out.println("Food has been deleted.");
+	}
+
+	public static void viewMenuItem(ArrayList<Items> itemList, ArrayList<Drinks> drinkList) {
+		int a = 0;
+		int b = 0;
+
+		System.out.println("Food Item: ");
+		for (Items i : itemList) {
+			a++;
+			System.out.println(a + ". " + i.getItem());
+		}
+
+		System.out.println("\nDrink Item: ");
+		for (Drinks d : drinkList) {
+			b++;
+			System.out.println(b + ". " + d.getName());
 		}
 	}
 
