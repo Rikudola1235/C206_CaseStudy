@@ -649,5 +649,69 @@ public static String getOrders(ArrayList<LunchBox>orderList) {
 		System.out.println("Account has been updated!");
 
 	}
+	public static String retrieveOrderbill(ArrayList<OrderBills> orderbillList) {
+		String output = "";
+		for(int i = 0; i<orderbillList.size();i++) {
+			output += String.format("%-15d %-10s%-20d", orderbillList.get(i).getAmount(), orderbillList.get(i).getItems(), orderbillList.get(i).getBillNo());
+		}
+		return output;
+		
+	}
+	public static void viewOrderbill(ArrayList<OrderBills> orderbillList) {
+		C206_CaseStudy.setHeader("Order Bills");
+		String output = String.format("%-15s %-10s%-20s", "AMOUNT", "ITEMS", "BILL NUMBER");
+		output += retrieveOrderbill(orderbillList);
+		System.out.println(output);
+	}
+	
+	public static void Orderbilladd(ArrayList<OrderBills> orderbillList) {
+		int total = Helper.readInt("Enter total bill amount: ");
+		String item = Helper.readString("Enter Item: ");
+		int billNum = Helper.readInt("Enter Bill Number: ");
+		
+		orderbillList.add(new OrderBills(total,item,billNum));
+
+	}
+	
+	public static void addOrderbill(ArrayList<OrderBills> orderbillList, OrderBills ob) {
+		orderbillList.add(ob);
+		System.out.print("Order bill added");
+	}
+
+	public static void Orderbilldelete(ArrayList<OrderBills> orderbillList) {
+		int option = Helper.readInt("Enter Bill Number to delete >");
+		
+		for(int i = 0; i<orderbillList.size();i++) {
+			if(orderbillList.get(i).getBillNo() == option) {
+				deleteOrderbill(orderbillList, i);
+			}
+		}
+		
+	}
+	public static void deleteOrderbill(ArrayList<OrderBills> orderbillList, int i) {
+		orderbillList.remove(i);
+		
+	}
+	public static void updateOrderbill(ArrayList<OrderBills> orderbillList) {
+		int option = Helper.readInt("Enter Bill Number to delete >");
+		
+		for(int i = 0; i<orderbillList.size();i++) {
+			if(orderbillList.get(i).getBillNo() == option) {
+				int choose = Helper.readInt("Which Field do you want to edit:");
+					if(choose == 1) {
+						int newtotal = Helper.readInt("Enter new total: ");
+						orderbillList.get(i).setAmount(newtotal);
+					}else if(choose == 2) {
+						String newitem = Helper.readString("Enter new Item: ");
+						orderbillList.get(i).setItems(newitem);
+					}else if(choose == 3) {
+						int newNum = Helper.readInt("Enter new Bill Number: ");
+						orderbillList.get(i).setBillNo(newNum);
+					}
+			}else {
+				System.out.print("No such Bill Number");
+			}
+		}
+	}
 
 }
