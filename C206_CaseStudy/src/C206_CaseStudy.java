@@ -44,8 +44,6 @@ public class C206_CaseStudy {
 		drinkList.add(new Drinks("Orange Juice"));
 		drinkList.add(new Drinks("Apple Juice"));
 		
-		// monthly menu for day 1 is standard
-		monthlyList.add(new MonthlyMenu(1, "Asian", "Laksa", "Iced Tea"));
 
 		int option = 0;
 
@@ -66,8 +64,28 @@ public class C206_CaseStudy {
 						int mmoption = Helper.readInt("Enter an option > ");
 
 						if (mmoption == 1) {
-							// Generate Monthly Menu
-							createMonthlyMenu(monthlyList, drinkList, itemList);
+							// Create Monthly Menu
+							
+							if (monthlyList.isEmpty()) {
+								char choice = Helper.readChar("Would you like to generate Monthly Menu automatically (y/n) > ");
+
+								if (choice == 'y' || choice == 'Y') {
+									generateRandomMonthlyMenu(monthlyList, drinkList, itemList);
+								}
+								
+								else if (choice == 'n' || choice == 'N') {
+									for (int i = 0; i < 5; i++) {
+										int u = 1 + i;
+										System.out.println("\nFill in Monthly Menu for Day " + u);
+										MonthlyMenu mMenu = addInputMonthlyMenu();
+										addMonthlyMenu(monthlyList, mMenu);
+									}
+									System.out.println("Monthly Menu have been generated!");
+								}
+							}
+							else {
+								 System.out.println("Monthly Menu have already been generated!");
+							 }
 						}
 
 						else if (mmoption == 2) {
@@ -335,10 +353,6 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 	
-	public static int doRandom(int min, int max) {
-	    Random random = new Random();
-	    return random.nextInt(max - min) + min;
-	}
 
 	
 	public static MonthlyMenu addInputMonthlyMenu() {
@@ -353,69 +367,34 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static void createMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
-			ArrayList<Items> itemList) {
+	public static void addMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, MonthlyMenu mMenu) {
+		monthlyList.add(mMenu);
 		
-		if (monthlyList.isEmpty() || monthlyList.size() == 1) {
-			char choice = Helper.readChar("Would you like to generate Monthly Menu automatically (y/n) > ");
-
-			if (choice == 'y' || choice == 'Y') {
-				if (monthlyList.size() == 1) {
-					for (int i = 1; i < 5; i++) {
-						Random random = new Random();
-						int min = 0, max = 4;
-						
-						int r1 = random.nextInt((max - min) + 1) + min;
-						int r2 = random.nextInt((max - min) + 1) + min;
-						
-						Items m = itemList.get(r1);
-						Drinks d = drinkList.get(r2);
-						monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
-						
-					}
-				}
-				else if (monthlyList.isEmpty()) {
-					for (int i = 0; i < 5; i++) {
-						Random random = new Random();
-						int min = 0, max = 4;
-						
-						int r1 = random.nextInt((max - min) + 1) + min;
-						int r2 = random.nextInt((max - min) + 1) + min;
-						
-						Items m = itemList.get(r1);
-						Drinks d = drinkList.get(r2);
-						monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
-						
-					}
-				}
-			}
-			
-			else if (choice == 'n' || choice == 'N') {
-				if (monthlyList.size() == 1) {
-					for (int i = 1; i < 5; i++) {
-						int u = 1 + i;
-						System.out.println("\nFill in Monthly Menu for Day " + u);
-						MonthlyMenu mMenu = addInputMonthlyMenu();
-						monthlyList.add(mMenu);
-					}
-				}
-				else if (monthlyList.isEmpty()) {
-					for (int i = 0; i < 5; i++) {
-						int u = 1 + i;
-						System.out.println("\nFill in Monthly Menu for Day " + u);
-						MonthlyMenu mMenu = addInputMonthlyMenu();
-						monthlyList.add(mMenu);
-					}
-				}
-			}
-			
-			System.out.println("Monthly Menu have been generated!");
-		}
-		
-		else if (monthlyList.size() == 5) {
-			System.out.println("Monthly Menu have already been generated!");
-		}
 	}
+	
+	public static int doRandom(int min, int max) {
+	    Random random = new Random();
+	    return random.nextInt(max - min) + min;
+	}
+	
+	public static void generateRandomMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
+			ArrayList<Items> itemList){
+
+			for (int i = 0; i < 5; i++) {
+				Random random = new Random();
+				int min = 0, max = 4;
+				
+				int r1 = random.nextInt((max - min) + 1) + min;
+				int r2 = random.nextInt((max - min) + 1) + min;
+				
+				Items m = itemList.get(r1);
+				Drinks d = drinkList.get(r2);
+				monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
+				
+			}
+			System.out.println("Monthly Menu have been generated!");
+	}
+	
 	
 	
 	public static void deleteMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
