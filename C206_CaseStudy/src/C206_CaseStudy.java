@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class C206_CaseStudy {
-
+	
+	static double totalCost = 0;
+	
 	public static void main(String[] args) {
 
 		ArrayList<LunchBox> lunchboxList = new ArrayList<LunchBox>();
@@ -24,8 +26,7 @@ public class C206_CaseStudy {
 
 		ArrayList<Items> itemList = new ArrayList<Items>();
 
-		// add user account
-//		userAcctList.add(new UserAccount(1, "Matthew", "T0313194c", "Student"));
+		
 
 		// add lunchbox to arraylist
 		lunchboxList.add(new LunchBox("Tuna Sandwich", "Vegetarian Food", 2.50));
@@ -412,11 +413,11 @@ public class C206_CaseStudy {
 
 	}
 
-public static String getOrders(ArrayList<LunchBox>orderList) {
+	public static String getOrders(ArrayList<LunchBox>orderList) {
 		
 		String order = "";
 		for(LunchBox Order : orderList)
-		order += String.format("%-10s %-30s %-10s\n", Order.getLunchBoxName(), Order.getCategory(), Order.getPrice());
+		order += String.format("%-10s %-30s %-10.2f\n", Order.getLunchBoxName(), Order.getCategory(), Order.getPrice());
 		
 		return order; 
 	}
@@ -434,7 +435,9 @@ public static String getOrders(ArrayList<LunchBox>orderList) {
 			if(lunchbox.getLunchBoxName().equalsIgnoreCase(newOrder)) {
 				
 				validOrder = true;
+				totalCost += lunchbox.getPrice();
 				orderList.add(lunchbox);
+				
 			}
 		}
 		if(validOrder == false) {
@@ -446,11 +449,12 @@ public static String getOrders(ArrayList<LunchBox>orderList) {
 	public static void deleteOrder(ArrayList<LunchBox>orderList) {
 		boolean validOrder = false;
 		String deleteOrder = Helper.readString("Enter in Lunchbox name to delete > ");
-		for(LunchBox lunchbox : orderList) {
-			if(lunchbox.getLunchBoxName().equalsIgnoreCase(deleteOrder)) {
+		for(int i = 0; i < orderList.size(); i++) {
+			if(orderList.get(i).getLunchBoxName().equalsIgnoreCase(deleteOrder)) {
 				
 				validOrder = true;
-				orderList.remove(lunchbox);
+				totalCost -= orderList.get(i).getPrice();
+				orderList.remove(orderList.get(i));
 			}
 		}
 		if(validOrder == false) {
@@ -458,7 +462,7 @@ public static String getOrders(ArrayList<LunchBox>orderList) {
 		}
 
 	}
-
+	
 	
 	public static String retrieveAccount(ArrayList<Account> accountList) {
 		String output = "";

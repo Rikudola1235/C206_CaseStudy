@@ -21,6 +21,13 @@ public class C206_CaseStudyTest {
 	private MonthlyMenu mMenu4;
 	private MonthlyMenu mMenu5;
 	private ArrayList<MonthlyMenu> monthlyList;
+	
+	private LunchBox lb1;
+	private LunchBox lb2;
+	private LunchBox lb3;
+	static double totalCost = 0;
+	private ArrayList<LunchBox> lunchboxList;
+	private ArrayList<LunchBox> orderList;
 
 	@Before
 	public void setUp() throws Exception {
@@ -36,6 +43,15 @@ public class C206_CaseStudyTest {
 		mMenu4 = new MonthlyMenu(1, "Western", "Pizza", "Iced Milo");
 		mMenu5 = new MonthlyMenu(1, "Western", "Spaghetti", "Iced Latte");
 		monthlyList = new ArrayList<MonthlyMenu>();
+		
+		lb1 = new LunchBox("Char Kuay Teow", "Asian Food", 4.00);
+		lb2 = new LunchBox("Chicken Cutlet Rice", "Western Food", 5.00);
+		lb3 = new LunchBox("Tuna Sandwich", "Vegetarian Food", 2.50); 
+		
+		
+		
+		orderList = new ArrayList<LunchBox>();
+		
 	}
 
 	@Test
@@ -235,7 +251,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check of account list size is 5", monthlyList.size(), 5);
 		
 	}
-
+	
 
 	@Test
 	public void testDeleteMonthlyMenu() {
@@ -264,10 +280,63 @@ public class C206_CaseStudyTest {
 		// error condition where monthlyList is empty
 		C206_CaseStudy.deleteMonthlyMenu(monthlyList);
 		assertEquals("Test to see if empty list can be deleted", monthlyList.size(), 0);
-
+		
 	}
 	
+	@Test
+	public void testPlaceOrder() {
+		// Matthew's testPlaceOrder
+		//check that lunchbox order list is empty at first
+		orderList.clear();
+		assertNotNull("Test for a arraylist to be empty", orderList);
+		
+		orderList.add(new LunchBox("Char Kuay Teow", "Asian Food", 4.00));
+		assertEquals("Check that order list size is 1", orderList.size(), 1);
+		
+		orderList.add(lb2);
+		assertSame("Test that order added is same as 2nd item of the list?", lb2, orderList.get(1));
+		
+	}
 	
+	@Test
+	public void testViewOrders() {
+		// Test if order list is not null but empty -boundary
+		assertNotNull("Test if there is valid order arraylist to retrieve item", orderList);
+		
+		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
+		String testOutput = "";
+		orderList.add(lb1);
+		orderList.add(lb2);
+		String allOrders = C206_CaseStudy.getOrders(orderList);
+		testOutput = String.format("%-10s %-30s %-10.2f\n","Char Kuay Teow", "Asian Food", 4.00);
+		testOutput += String.format("%-10s %-30s %-10.2f\n","Chicken Cutlet Rice", "Western Food", 5.00);
+		
+
+		assertEquals("Test that ViewAllCamcorderlist", testOutput, allOrders);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		orderList.clear();
+		orderList.add(lb1);
+		orderList.add(lb2);
+		assertEquals("Test that orderList arraylist size is 2", 2, orderList.size());
+	}
+	
+	@Test
+	public void testDeleteOrders() {
+		orderList.clear();
+		//Given a list with 1 element, after deleting 1 order, the size of the list is 0 - normal
+		orderList.add(lb3);
+		C206_CaseStudy.deleteOrder(orderList);
+		assertEquals("Test that Chromebook arraylist size is 0", 0, orderList.size());
+		
+		//Test for deleting an order from an empty order list, an error occurs - boundary
+		orderList.clear();
+		C206_CaseStudy.deleteOrder(orderList);
+		assertEquals("Test that Chromebook arraylist size is 0", 0, orderList.size());
+		
+		//Test that 2 values are equal
+		assertEquals(lb1.getPrice(), 4.00, 0.00);
+	}
 
 	@After
 	public void tearDown() throws Exception {
