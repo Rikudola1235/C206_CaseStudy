@@ -257,7 +257,7 @@ public class C206_CaseStudyTest {
 		assertSame("Test that Monthly Menu added is same as 2nd item of the list?", mMenu2, monthlyList.get(1));
 		
 
-		// test if the expected output is same as the list of accounts retrieved from the main class
+		// test if the expected output is same as the list of monthly menu retrieved from the main class
 		monthlyMenu = C206_CaseStudy.retrieveMonthlyMenu(monthlyList);
 
 		testOutput = String.format("%-5d %-20s %-20s %-20s\n", 1, "Asian", "Laksa", "Iced Tea");

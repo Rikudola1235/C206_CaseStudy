@@ -77,7 +77,7 @@ public class C206_CaseStudy {
 									for (int i = 0; i < 5; i++) {
 										int u = 1 + i;
 										System.out.println("\nFill in Monthly Menu for Day " + u);
-										MonthlyMenu mMenu = addInputMonthlyMenu();
+										MonthlyMenu mMenu = inputMonthlyMenu();
 										addMonthlyMenu(monthlyList, mMenu);
 									}
 									System.out.println("Monthly Menu have been generated!");
@@ -355,7 +355,7 @@ public class C206_CaseStudy {
 	
 
 	
-	public static MonthlyMenu addInputMonthlyMenu() {
+	public static MonthlyMenu inputMonthlyMenu() {
 
 			int day = Helper.readInt("Day > ");
 			String cat = Helper.readString("Category > ");
