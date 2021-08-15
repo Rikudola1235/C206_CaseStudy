@@ -43,7 +43,6 @@ public class C206_CaseStudy {
 		drinkList.add(new Drinks("Plain Water"));
 		drinkList.add(new Drinks("Orange Juice"));
 		drinkList.add(new Drinks("Apple Juice"));
-		
 
 		int option = 0;
 
@@ -65,14 +64,15 @@ public class C206_CaseStudy {
 
 						if (mmoption == 1) {
 							// Create Monthly Menu
-							
+
 							if (monthlyList.isEmpty()) {
-								char choice = Helper.readChar("Would you like to generate Monthly Menu automatically (y/n) > ");
+								char choice = Helper
+										.readChar("Would you like to generate Monthly Menu automatically (y/n) > ");
 
 								if (choice == 'y' || choice == 'Y') {
 									generateRandomMonthlyMenu(monthlyList, drinkList, itemList);
 								}
-								
+
 								else if (choice == 'n' || choice == 'N') {
 									for (int i = 0; i < 5; i++) {
 										int u = 1 + i;
@@ -82,10 +82,9 @@ public class C206_CaseStudy {
 									}
 									System.out.println("Monthly Menu have been generated!");
 								}
+							} else {
+								System.out.println("Monthly Menu have already been generated!");
 							}
-							else {
-								 System.out.println("Monthly Menu have already been generated!");
-							 }
 						}
 
 						else if (mmoption == 2) {
@@ -98,7 +97,6 @@ public class C206_CaseStudy {
 							deleteMonthlyMenu(monthlyList);
 						}
 					}
-				
 
 					else if (staffoption == 2) {
 						// Menu Items
@@ -145,7 +143,7 @@ public class C206_CaseStudy {
 							// Delete Menu Items
 							C206_CaseStudy.ItemsMenu();
 							int deleteoption1 = Helper.readInt("Enter an option > ");
-							
+
 							if (deleteoption1 == 1) {
 								String item = Helper.readString("Enter drink name to delete > ");
 								for (Drinks d : drinkList) {
@@ -182,12 +180,12 @@ public class C206_CaseStudy {
 							// Delete Order Bill
 						}
 					}
-					
+
 					else if (staffoption == 4) {
 						C206_CaseStudy.MainMenu();
 						option = Helper.readInt("Enter an option > ");
 					}
-		
+
 				} else if (option == 2) {
 					// User Login
 					C206_CaseStudy.UserMenu();
@@ -213,6 +211,9 @@ public class C206_CaseStudy {
 						else if (accoption == 3) {
 							// Delete User Account
 							C206_CaseStudy.delectAccount(accountList);
+						} else if (accoption == 4) {
+							// update User Account
+							C206_CaseStudy.updateAccount(accountList);
 						}
 					} else if (useroption == 2) {
 						// LunchBox Order
@@ -231,24 +232,21 @@ public class C206_CaseStudy {
 							// Delete LunchBox Order
 						}
 					}
-					
+
 					else if (useroption == 3) {
 						C206_CaseStudy.MainMenu();
 						option = Helper.readInt("Enter an option > ");
 					}
-				} 
-				
+				}
+
 				else {
 					System.out.println("Goodbye!");
 					break;
 				}
 			}
-		} 
-		
+		}
+
 	}
-			
-
-
 
 	public static void MainMenu() {
 		C206_CaseStudy.setHeader("Login");
@@ -307,7 +305,8 @@ public class C206_CaseStudy {
 		System.out.println("1. Add User Account");
 		System.out.println("2. View User Account");
 		System.out.println("3. Delete User Account");
-		System.out.println("4. Quit");
+		System.out.println("4. Update User Account");
+		System.out.println("5. Quit");
 		Helper.line(80, "-");
 	}
 
@@ -352,69 +351,65 @@ public class C206_CaseStudy {
 		output += retrieveAllLunchBoxes(lunchboxList);
 		System.out.println(output);
 	}
-	
 
-	
 	public static MonthlyMenu inputMonthlyMenu() {
 
-			int day = Helper.readInt("Day > ");
-			String cat = Helper.readString("Category > ");
-			String food = Helper.readString("Food Name > ");
-			String drink = Helper.readString("Drink Name > ");
-			MonthlyMenu mMenu = new MonthlyMenu(day, cat, food, drink);
-			
-			return mMenu;		
-		
+		int day = Helper.readInt("Day > ");
+		String cat = Helper.readString("Category > ");
+		String food = Helper.readString("Food Name > ");
+		String drink = Helper.readString("Drink Name > ");
+		MonthlyMenu mMenu = new MonthlyMenu(day, cat, food, drink);
+
+		return mMenu;
+
 	}
-	
+
 	public static void addMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, MonthlyMenu mMenu) {
 		monthlyList.add(mMenu);
 		System.out.println("Added!");
 	}
-	
-	public static int doRandom(int min, int max) {
-	    Random random = new Random();
-	    return random.nextInt(max - min) + min;
-	}
-	
-	public static void generateRandomMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
-			ArrayList<Items> itemList){
 
-			for (int i = 0; i < 5; i++) {
-				Random random = new Random();
-				int min = 0, max = 4;
-				
-				int r1 = random.nextInt((max - min) + 1) + min;
-				int r2 = random.nextInt((max - min) + 1) + min;
-				
-				Items m = itemList.get(r1);
-				Drinks d = drinkList.get(r2);
-				monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
-				
-			}
-			System.out.println("Monthly Menu have been generated!");
+	public static int doRandom(int min, int max) {
+		Random random = new Random();
+		return random.nextInt(max - min) + min;
 	}
-	
-	
-	
+
+	public static void generateRandomMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, ArrayList<Drinks> drinkList,
+			ArrayList<Items> itemList) {
+
+		for (int i = 0; i < 5; i++) {
+			Random random = new Random();
+			int min = 0, max = 4;
+
+			int r1 = random.nextInt((max - min) + 1) + min;
+			int r2 = random.nextInt((max - min) + 1) + min;
+
+			Items m = itemList.get(r1);
+			Drinks d = drinkList.get(r2);
+			monthlyList.add(new MonthlyMenu(i + 1, m.getCategory(), m.getItem(), d.getName()));
+
+		}
+		System.out.println("Monthly Menu have been generated!");
+	}
+
 	public static void deleteMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
-		
+
 		if (monthlyList.isEmpty() == false) {
 			monthlyList.removeAll(monthlyList);
-			
-		System.out.println("Monthly Menu have been deleted. Please generate a new one for the month!");
-			
+
+			System.out.println("Monthly Menu have been deleted. Please generate a new one for the month!");
+
 		} else {
 			System.out.println("Monthly Menu is not available. Please generate a Monthly Menu!");
 		}
 
 	}
-	
+
 	public static String retrieveMonthlyMenu(ArrayList<MonthlyMenu> monthlyList) {
 		String output = "";
 		for (int i = 0; i < monthlyList.size(); i++) {
-			output += String.format("%-5d %-20s %-20s %-20s\n", monthlyList.get(i).getDay(), monthlyList.get(i).getCat(),
-					monthlyList.get(i).getFood(), monthlyList.get(i).getDrink());
+			output += String.format("%-5d %-20s %-20s %-20s\n", monthlyList.get(i).getDay(),
+					monthlyList.get(i).getCat(), monthlyList.get(i).getFood(), monthlyList.get(i).getDrink());
 		}
 		return output;
 	}
@@ -461,6 +456,7 @@ public class C206_CaseStudy {
 
 		Account acc = new Account(role, username, pw, contactNumber);
 		return acc;
+
 	}
 
 	public static void addAccount(ArrayList<Account> accountList, Account acc) {
@@ -495,6 +491,43 @@ public class C206_CaseStudy {
 			}
 			System.out.println("User account has been deleted!");
 		}
+	}
+
+	public static boolean modifyAccount(ArrayList<Account> accountList, String username) {
+		boolean flag = false;
+
+		for (int i = 0; i < accountList.size(); i++) {
+			String name = accountList.get(i).getUsername();
+			if (username.equals(name)) {
+				flag = true;
+			}
+		}
+		return flag;
+	}
+
+	public static void updateAccount(ArrayList<Account> accountList) {
+		viewAccount(accountList);
+
+		String username = Helper.readString("Enter username to update > ");
+		boolean flag = modifyAccount(accountList, username);
+		if (flag == false) {
+			System.out.println("Username invalid");
+		} else {
+			for (int i = 0; i < accountList.size(); i++) {
+				if (accountList.get(i).getUsername().equals(username)) {
+					String newUsername = Helper.readString("Enter new username > ");
+					int newcontactNumber = Helper.readInt("Enter new contact number > ");
+					String newPW = Helper.readString("Enter new password > ");
+
+					accountList.get(i).setUsername(newUsername);
+					accountList.get(i).setContactNumber(newcontactNumber);
+					accountList.get(i).setPassword(newPW);
+
+				}
+			}
+		}
+		System.out.println("Account has been updated!");
+
 	}
 
 }
