@@ -369,7 +369,7 @@ public class C206_CaseStudy {
 	
 	public static void addMonthlyMenu(ArrayList<MonthlyMenu> monthlyList, MonthlyMenu mMenu) {
 		monthlyList.add(mMenu);
-		
+		System.out.println("Added!");
 	}
 	
 	public static int doRandom(int min, int max) {
