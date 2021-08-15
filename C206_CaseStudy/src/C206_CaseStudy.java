@@ -15,8 +15,8 @@ public class C206_CaseStudy {
 		accountList.add(new Account("Parent", "parent1", "parentPW1", 11110001));
 		accountList.add(new Account("Parent", "parent2", "parentPW2", 11110002));
 		accountList.add(new Account("Parent", "parent3", "parentPW3", 11110003));
-
-		ArrayList<UserAccount> userAcctList = new ArrayList<UserAccount>();
+		
+		ArrayList<LunchBox> orderList = new ArrayList<LunchBox>();
 
 		ArrayList<MonthlyMenu> monthlyList = new ArrayList<MonthlyMenu>();
 
@@ -193,14 +193,18 @@ public class C206_CaseStudy {
 
 						if (loOption == 1) {
 							// Place LunchBox Order
+							placeOrder(orderList, lunchboxList);
+							
 						}
 
 						else if (loOption == 2) {
 							// View LunchBox Order
+							viewOrders(orderList);
 						}
 
 						else if (loOption == 3) {
 							// Delete LunchBox Order
+							deleteOrder(orderList);
 						}
 					}
 
@@ -408,6 +412,54 @@ public class C206_CaseStudy {
 
 	}
 
+public static String getOrders(ArrayList<LunchBox>orderList) {
+		
+		String order = "";
+		for(LunchBox Order : orderList)
+		order += String.format("%-10s %-30s %-10s\n", Order.getLunchBoxName(), Order.getCategory(), Order.getPrice());
+		
+		return order; 
+	}
+	
+	public static void viewOrders(ArrayList<LunchBox>orderList) {
+		String output = "";
+		 output += getOrders(orderList);	
+		 System.out.println(output);
+	}
+	
+	public static void placeOrder(ArrayList<LunchBox>orderList, ArrayList<LunchBox>lunchboxList) {
+		boolean validOrder = false;
+		String newOrder = Helper.readString("Enter in Lunchbox name to order > ");
+		for(LunchBox lunchbox : lunchboxList) {
+			if(lunchbox.getLunchBoxName().equalsIgnoreCase(newOrder)) {
+				
+				validOrder = true;
+				orderList.add(lunchbox);
+			}
+		}
+		if(validOrder == false) {
+			System.out.println("Invalid Order!");
+		}
+
+	}
+	
+	public static void deleteOrder(ArrayList<LunchBox>orderList) {
+		boolean validOrder = false;
+		String deleteOrder = Helper.readString("Enter in Lunchbox name to delete > ");
+		for(LunchBox lunchbox : orderList) {
+			if(lunchbox.getLunchBoxName().equalsIgnoreCase(deleteOrder)) {
+				
+				validOrder = true;
+				orderList.remove(lunchbox);
+			}
+		}
+		if(validOrder == false) {
+			System.out.println("Invalid Order!");
+		}
+
+	}
+
+	
 	public static String retrieveAccount(ArrayList<Account> accountList) {
 		String output = "";
 		for (int i = 0; i < accountList.size(); i++) {
